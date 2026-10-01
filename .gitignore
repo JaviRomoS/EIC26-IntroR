@@ -1,0 +1,14 @@
+# Resultados que generan los estudiantes
+intro_R/output/*
+!intro_R/output/.gitkeep
+
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Quarto
+/.quarto/
+
+**/*.quarto_ipynb

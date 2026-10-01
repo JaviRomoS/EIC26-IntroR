@@ -1,0 +1,1557 @@
+---
+pagetitle: "Cápsula · Introducción a R"
+format:
+  revealjs:
+    theme: [default, estilos.scss]
+    slide-number: c/t
+    width: 1280
+    height: 800
+    margin: 0.06
+    center: false
+    transition: none
+    hash-type: number
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github
+    footer: "Estrategias de Investigación Cuantitativa 2026 · Cápsula: Introducción a R"
+    menu: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+options(scipen = 999)
+library(tidyverse)
+library(readxl)
+library(haven)
+library(knitr)
+notas <- read_excel("input/notas_colegio.xlsx")
+```
+
+## {.portada}
+
+::: {.portada-top}
+![](img/logo_facso.png)
+
+Prof. Pablo Pérez Ahumada<br>
+Apoyo docente: Javiera Romo Sánchez<br>
+Ayudantes: Valentina Montecinos, Martina Buzio, Javiera Álvarez, Millaray Vergara y Tomás González.
+:::
+
+::: {.portada-curso}
+Estrategias de Investigación<br>Cuantitativa
+:::
+
+::: {.portada-taller}
+Introducción<br>a R
+:::
+
+::: {.portada-tema}
+Cápsula · RStudio, objetos, librerías, bases de datos, tipos de variables y `dplyr`
+:::
+
+## Contenidos
+
+::: ruta
+::: paso-ruta
+**1 · Interfaz de RStudio**
+Consola, script, entorno y proyectos.
+:::
+::: paso-ruta
+**2 · Programación básica**
+R como calculadora, objetos y funciones.
+:::
+::: paso-ruta
+**3 · Librerías**
+Instalar, cargar y el `tidyverse`.
+:::
+::: paso-ruta
+**4 · Bases de datos rectangulares**
+Variables, valores, observaciones. Importar datos.
+:::
+::: paso-ruta
+**5 · Naturaleza de las variables**
+Numéricas, texto, lógicas, factores, `haven_labelled`, `NA`.
+:::
+::: paso-ruta
+**6 · Transformar datos con `dplyr`**
+Filtrar, seleccionar, crear variables y resumir por grupos.
+:::
+:::
+
+<br>
+
+::: nota
+Esta cápsula se basa en **R para Ciencia de Datos** (Wickham y Grolemund), traducción al español: <https://es.r4ds.hadley.nz/>
+:::
+
+## Antes de empezar: descarguen el proyecto
+
+<br>
+
+::: centrado
+[⬇ Descargar intro_R.zip](intro_R.zip){.boton}
+:::
+
+<br>
+
+1. Descarguen y **descompriman** la carpeta (clic derecho → *Extraer todo*).
+2. Abran **`intro_R.Rproj`** con doble clic. Se abre RStudio con todo listo.
+3. Abran **`script/capsula_intro_R.R`** y sigan la cápsula desde ahí.
+
+::: nota
+**Dentro de la carpeta:** `input/` (base de datos) · `script/` (código de la cápsula) · `output/` (donde guardaremos resultados)
+:::
+
+<!-- ================================================================== -->
+<!-- MÓDULO 1 · INTERFAZ DE RSTUDIO                                      -->
+<!-- ================================================================== -->
+
+## {.seccion}
+
+::: seccion-texto
+Módulo 1<br>La interfaz de RStudio
+:::
+
+## R y RStudio: ¿cuál es la diferencia?
+
+::: modulo
+Módulo 1 · Interfaz
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+### R
+
+- Un **lenguaje de programación** para analizar datos.
+- Es el que hace los cálculos.
+- Gratuito y de código abierto.
+:::
+::: {.column width="50%"}
+### RStudio
+
+- Un **entorno de trabajo** para usar R.
+- Organiza el código, los datos, los gráficos y la ayuda.
+- Hay que instalar **los dos**: primero R, luego RStudio.
+:::
+::::
+
+<br>
+
+::: grande
+R es lo que usamos; RStudio es solo la interfaz.
+:::
+
+## Los cuatro paneles de RStudio
+
+::: modulo
+Módulo 1 · Interfaz
+:::
+
+::: paneles
+::: panel
+**1 · Editor (script)**
+Donde escribimos y **guardamos** el código. Es nuestro cuaderno de trabajo.
+:::
+::: panel
+**3 · Entorno (Environment)**
+Muestra los **objetos** que hemos creado: bases de datos, vectores, resultados.
+:::
+::: panel
+**2 · Consola**
+Donde R **ejecuta** el código y muestra los resultados.
+:::
+::: panel
+**4 · Archivos / Gráficos / Paquetes / Ayuda**
+Navegar carpetas, ver gráficos, revisar paquetes instalados y leer la ayuda.
+:::
+:::
+
+## La consola
+
+::: modulo
+Módulo 1 · Interfaz
+:::
+
+Podemos escribir código directamente en la consola y presionar **Enter**:
+
+```{r}
+#| label: consola
+2 + 2
+```
+
+- El símbolo **`>`** indica que R está listo para recibir una instrucción.
+- Si aparece **`+`**, R está esperando que terminemos la instrucción (falta cerrar un paréntesis o una comilla). Se sale con **Esc**.
+- El `[1]` indica que el resultado empieza en el primer elemento.
+
+::: alerta
+Lo que escribimos en la consola **no queda guardado**. Sirve para probar cosas rápidas, no para trabajar.
+:::
+
+## El script
+
+::: modulo
+Módulo 1 · Interfaz
+:::
+
+Un script es un **archivo de texto con extensión `.R`** donde escribimos el código para poder guardarlo, corregirlo y volver a ejecutarlo.
+
+- Nuevo script: **File → New File → R Script** (`Ctrl + Shift + N`).
+- Ejecutar una línea o selección: **`Ctrl + Enter`** (en Mac: `Cmd + Enter`).
+- Ejecutar todo el script: **`Ctrl + Shift + Enter`**.
+- Todo lo que va después de **`#`** es un **comentario**: R no lo ejecuta.
+
+```{r}
+#| label: script-comentario
+# Esto es un comentario: sirve para explicar qué hace el código
+3 * 5   # también se puede comentar al final de una línea
+```
+
+::: nota
+El script es la **fuente de verdad** de nuestro análisis: cualquier persona debería poder abrirlo y obtener los mismos resultados.
+:::
+
+## El entorno (Environment)
+
+::: modulo
+Módulo 1 · Interfaz
+:::
+
+- Muestra todos los **objetos** que existen en nuestra sesión de R.
+- Si cerramos RStudio, el entorno se borra y es justamente lo que buscamos. Lo importante es guardar el script.
+
+<br>
+
+```{r}
+#| label: limpiar-entorno
+#| eval: false
+rm(list = ls())   # borra todos los objetos del entorno
+```
+
+## Proyectos de RStudio
+
+::: modulo
+Módulo 1 · Interfaz
+:::
+
+Un **proyecto** (`.Rproj`) es una carpeta que reúne todo lo de un análisis. Al abrirlo, R sabe **dónde estamos trabajando** (el *directorio de trabajo*).
+
+:::: {.columns}
+::: {.column width="45%"}
+```
+intro_R/
+├── intro_R.Rproj
+├── input/    datos originales
+├── script/   código
+└── output/   resultados
+```
+:::
+::: {.column width="55%"}
+- Siempre abrimos el trabajo **haciendo doble clic en el `.Rproj`**.
+- Así R sabe en qué carpeta estamos trabajando para poder buscar la base de datos y para saber dónde guardar lo que le pidamos.
+- Esto permite que el código funcione igual en cualquier computador.
+:::
+::::
+
+```{r}
+#| label: getwd
+#| eval: false
+getwd()   # ¿en qué carpeta estoy trabajando?
+```
+
+
+<!-- ================================================================== -->
+<!-- MÓDULO 2 · PROGRAMACIÓN BÁSICA                                      -->
+<!-- ================================================================== -->
+
+## {.seccion}
+
+::: seccion-texto
+Módulo 2<br>Programación básica
+:::
+
+## R como calculadora
+
+::: modulo
+Módulo 2 · Programación básica
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| label: calculadora
+10 + 5      # suma
+10 - 5      # resta
+10 * 5      # multiplicación
+10 / 4      # división
+2 ^ 3       # potencia
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| label: calculadora2
+(5.5 + 6.2) / 2   # paréntesis primero
+sqrt(16)          # raíz cuadrada
+```
+
+::: nota
+R respeta el orden de las operaciones: paréntesis, potencias, multiplicación y división, suma y resta.
+:::
+
+::: alerta
+En R los decimales se escriben con **punto**: `5.5`, no `5,5`.
+:::
+:::
+::::
+
+## Crear objetos
+
+::: modulo
+Módulo 2 · Programación básica
+:::
+
+Guardamos un valor en un **objeto** con el operador de asignación **`<-`**:
+
+```{r}
+#| label: asignacion
+nota_mate <- 5.5
+nota_leng <- 6.2
+```
+
+Se lee: *"`nota_mate` recibe el valor 5.5"*. El objeto aparece en el **Entorno**. Para ver su contenido, escribimos su nombre:
+
+```{r}
+#| label: asignacion2
+nota_mate
+promedio <- (nota_mate + nota_leng) / 2
+promedio
+```
+
+::: nota
+**Atajo:** `Alt + -` escribe `<-` (en Mac: `Option + -`).
+:::
+
+## Vectores: varios valores en un objeto
+
+::: modulo
+Módulo 2 · Programación básica
+:::
+
+Con la función **`c()`** (de *combinar*) creamos un **vector**: un conjunto de valores del mismo tipo.
+
+```{r}
+#| label: vectores
+notas_curso <- c(5.5, 6.2, 4.8, 3.9, 6.7)
+notas_curso
+notas_curso + 0.5   # la operación se aplica a cada elemento
+length(notas_curso) # ¿cuántos valores tiene?
+```
+
+::: nota
+**Idea clave para lo que viene:** una variable de una base de datos es un vector.
+:::
+
+## Funciones
+
+::: modulo
+Módulo 2 · Programación básica
+:::
+
+Una **función** recibe uno o más valores (*argumentos*), hace algo con ellos y devuelve un resultado.
+
+::: formula
+`nombre_funcion(argumento1 = valor1, argumento2 = valor2)`
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| label: funciones
+mean(notas_curso)     # promedio
+median(notas_curso)   # mediana
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| label: funciones2
+max(notas_curso)      # máximo
+round(4.8667, 1)      # redondear
+```
+:::
+::::
+
+## Argumentos y ayuda
+
+::: modulo
+Módulo 2 · Programación básica
+:::
+
+Los argumentos se pueden dar **por nombre** o **por posición**:
+
+```{r}
+#| label: argumentos
+round(x = 4.8667, digits = 2)   # por nombre
+round(4.8667, 2)                # por posición (mismo resultado)
+seq(from = 1, to = 7, by = 0.5) # secuencia del 1 al 7, de 0,5 en 0,5
+```
+
+Para saber qué argumentos tiene una función, pedimos ayuda:
+
+```{r}
+#| label: ayuda
+#| eval: false
+?round        # abre la ayuda en el panel 4
+help(mean)    # lo mismo
+```
+
+## Los errores son parte del proceso
+
+::: modulo
+Módulo 2 · Programación básica
+:::
+
+```{r}
+#| label: errores
+#| error: true
+Nota_mate          # R distingue mayúsculas: este objeto no existe
+```
+
+```r
+mean(notas_curso   # falta cerrar el paréntesis: la consola muestra "+" y espera
+```
+
+```{r}
+#| label: errores2
+#| error: true
+"5.5" + 1          # no se puede sumar texto con números
+```
+
+::: nota
+Lean el mensaje de error: casi siempre dice qué pasó. Los más comunes son **errores de tipeo**, **paréntesis o comillas sin cerrar** y **objetos que no se han creado**.
+:::
+
+<!-- ================================================================== -->
+<!-- MÓDULO 3 · LIBRERÍAS                                                -->
+<!-- ================================================================== -->
+
+## {.seccion}
+
+::: seccion-texto
+Módulo 3<br>Librerías (paquetes)
+:::
+
+## ¿Qué es un paquete?
+
+::: modulo
+Módulo 3 · Librerías
+:::
+
+- R trae muchas funciones de base (*R base*): `mean()`, `round()`, `c()`...
+- Los **paquetes** (o librerías) son **extensiones** creadas por la comunidad que agregan funciones nuevas.
+- Se descargan desde **CRAN**, el repositorio oficial de R (hay más de 20.000).
+
+<br>
+
+| Paquete | Para qué sirve |
+|---|---|
+| `readxl` | Abrir archivos de Excel |
+| `haven` | Abrir bases de SPSS, Stata y SAS |
+| `dplyr` | Transformar datos |
+| `ggplot2` | Hacer gráficos |
+
+## Instalar vs. cargar
+
+::: modulo
+Módulo 3 · Librerías
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+### Instalar: **una sola vez**
+
+```{r}
+#| label: instalar
+#| eval: false
+install.packages("readxl")
+```
+
+Descarga el paquete al computador. El nombre va **entre comillas**.
+:::
+::: {.column width="50%"}
+### Cargar: **cada sesión**
+
+```{r}
+#| label: cargar
+#| eval: false
+library(readxl)
+```
+
+Deja disponibles sus funciones mientras R esté abierto.
+:::
+::::
+
+<br>
+
+::: grande
+Instalar es comprar el libro. Cargar es sacarlo de la estantería.
+:::
+
+## El `tidyverse`
+
+::: modulo
+Módulo 3 · Librerías
+:::
+
+Una **colección de paquetes** diseñados para trabajar juntos en ciencia de datos. Es la base de *R para Ciencia de Datos*.
+
+```{r}
+#| label: tidyverse
+#| eval: false
+install.packages("tidyverse")   # una vez
+library(tidyverse)              # cada sesión
+```
+
+```
+── Attaching core tidyverse packages ─────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2
+── Conflicts ───────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+```
+
+::: nota
+Los **conflictos** avisan que dos paquetes tienen funciones con el mismo nombre. No es un error.
+:::
+
+## `pacman`: instalar y cargar en un paso
+
+::: modulo
+Módulo 3 · Librerías
+:::
+
+Cuando usamos varios paquetes, `pacman::p_load()` **instala los que falten y carga todos**:
+
+```{r}
+#| label: pacman
+#| eval: false
+install.packages("pacman")   # solo la primera vez
+
+pacman::p_load(tidyverse,   # manipulación de datos y gráficos
+               readxl,      # abrir archivos de Excel
+               haven)       # variables etiquetadas (SPSS, Stata)
+```
+
+<br>
+
+::: nota
+Esta es la forma que usaremos al inicio de cada script del curso.
+:::
+
+## La notación `paquete::funcion()`
+
+::: modulo
+Módulo 3 · Librerías
+:::
+
+Con **`::`** podemos usar una función de un paquete **sin cargarlo completo**, o dejar claro de dónde viene:
+
+```{r}
+#| label: dospuntos
+#| eval: false
+readxl::read_excel("input/notas_colegio.xlsx")
+dplyr::filter(notas, curso == "2°A")
+```
+
+<br>
+
+¿Cuándo es útil?
+
+- Cuando usamos **una sola función** de un paquete.
+- Cuando hay **conflictos** (dos paquetes con funciones del mismo nombre).
+- Para que otras personas sepan de dónde viene cada función.
+
+<!-- ================================================================== -->
+<!-- MÓDULO 4 · BASES DE DATOS RECTANGULARES                             -->
+<!-- ================================================================== -->
+
+## {.seccion}
+
+::: seccion-texto
+Módulo 4<br>Bases de datos rectangulares
+:::
+
+## Nuestra base de datos
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+Notas de **98 estudiantes** de dos cursos de un colegio (2°A y 2°B). Datos **ficticios**.
+
+| Variable | Descripción | Valores |
+|---|---|---|
+| `id` | Identificador del estudiante | 1 a 98 |
+| `curso` | Curso | 2°A, 2°B |
+| `genero` | Género | Femenino, Masculino |
+| `edad` | Edad en años | 15 a 17 |
+| `nota_matematicas` | Promedio anual en Matemáticas | 1,5 a 7,0 · **888** = No rindió · **999** = Sin información |
+| `nota_lenguaje` | Promedio anual en Lenguaje | 1,5 a 7,0 · **888** = No rindió · **999** = Sin información |
+
+::: nota
+La hoja `libro_codigos` del Excel tiene esta misma descripción. **Siempre** hay que revisar el libro de códigos antes de analizar una base.
+:::
+
+## Variable, valor y observación
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+```{=html}
+<table class="anatomia">
+<thead><tr><th>id</th><th>curso</th><th class="col-resaltada" style="color:#222">genero</th><th>edad</th><th>nota_matematicas</th><th>nota_lenguaje</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>2°A</td><td class="col-resaltada">Masculino</td><td>16</td><td>6.0</td><td>5.7</td></tr>
+<tr class="fila-resaltada"><td>2</td><td>2°A</td><td class="col-resaltada">Masculino</td><td>16</td><td class="celda-resaltada">4.7</td><td>5.3</td></tr>
+<tr><td>3</td><td>2°A</td><td class="col-resaltada">Masculino</td><td>16</td><td>5.1</td><td>5.2</td></tr>
+<tr><td>4</td><td>2°A</td><td class="col-resaltada">Masculino</td><td>17</td><td>6.1</td><td>5.0</td></tr>
+<tr><td>5</td><td>2°A</td><td class="col-resaltada">Femenino</td><td>15</td><td>4.1</td><td>6.7</td></tr>
+</tbody></table>
+```
+
+::: leyenda
+[Variable: una característica que medimos (columna)]{style="background:#fff3c4"}
+[Observación: la unidad que medimos (fila)]{style="background:#dbe7ff"}
+[Valor: lo que registramos (celda)]{style="background:#ffd1cf"}
+:::
+
+::: chico
+- Una **variable** es una cantidad, cualidad o propiedad que se puede medir: el género, la nota en Matemáticas.
+- Un **valor** es el estado de una variable al medirla: la nota en Matemáticas del estudiante 2 es **4.7**.
+- Una **observación** es un conjunto de mediciones hechas sobre la misma unidad: todo lo que sabemos del estudiante 2.
+:::
+
+## Datos ordenados (*tidy data*)
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+Según *R para Ciencia de Datos* (cap. 12), una base está **ordenada** cuando cumple tres reglas:
+
+<br>
+
+::: grande
+1. Cada **variable** tiene su propia **columna**.
+2. Cada **observación** tiene su propia **fila**.
+3. Cada **valor** tiene su propia **celda**.
+:::
+
+<br>
+
+::: nota
+Nuestra base de notas está ordenada: cada fila es un estudiante y cada columna una característica suya. Por eso se le llama **base rectangular**.
+:::
+
+## ¿Ordenada o desordenada?
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Desordenada**: el curso está "escondido" en los nombres de las columnas.
+
+```{r}
+#| label: desordenada
+desordenada <- tribble(
+  ~estudiante, ~mate_2A, ~mate_2B,
+  "Ana",        6.1,      NA,
+  "Benja",      NA,       5.4,
+  "Carla",      4.9,      NA
+)
+desordenada
+```
+:::
+::: {.column width="50%"}
+**Ordenada**: `curso` es una variable con su propia columna.
+
+```{r}
+#| label: ordenada
+ordenada <- tribble(
+  ~estudiante, ~curso, ~nota_mate,
+  "Ana",       "2°A",   6.1,
+  "Benja",     "2°B",   5.4,
+  "Carla",     "2°A",   4.9
+)
+ordenada
+```
+:::
+::::
+
+## El *data frame*
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+En R, una base rectangular se guarda como un **data frame**: un conjunto de **vectores del mismo largo**, uno por columna.
+
+```{r}
+#| label: dataframe
+estudiante <- c("Ana", "Benja", "Carla")
+curso      <- c("2°A", "2°B", "2°A")
+nota_mate  <- c(6.1, 5.4, 4.9)
+
+mi_base <- data.frame(estudiante, curso, nota_mate)
+mi_base
+```
+
+::: nota
+Cada columna es un vector (Módulo 2). Todas deben tener **la misma cantidad de valores**: uno por observación.
+:::
+
+## *Tibbles*: data frames modernos
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+El `tidyverse` usa **tibbles** (cap. 10): data frames que se imprimen de forma más ordenada.
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| label: tibble
+tibble(
+  estudiante = c("Ana", "Benja", "Carla"),
+  curso      = c("2°A", "2°B", "2°A"),
+  nota_mate  = c(6.1, 5.4, 4.9)
+)
+```
+:::
+::: {.column width="50%"}
+Al imprimir un tibble vemos:
+
+- El **número de filas y columnas** (`3 x 3`).
+- El **tipo** de cada variable bajo su nombre: `<chr>` texto, `<dbl>` número.
+- Solo las primeras 10 filas (no inunda la consola).
+
+```{r}
+#| label: as-tibble
+#| eval: false
+as_tibble(mi_base)   # convierte un data frame en tibble
+```
+:::
+::::
+
+## Importar datos desde Excel
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+Rara vez escribimos los datos a mano. Más bien, los **importamos** desde un archivo. Para Excel usamos `read_excel()` del paquete `readxl`:
+
+```{r}
+#| label: importar
+#| eval: false
+library(readxl)
+notas <- read_excel("input/notas_colegio.xlsx")
+```
+
+```{r}
+#| label: importar-ver
+notas
+```
+
+::: chico
+La ruta es **relativa** al proyecto: `input/` es la carpeta y `notas_colegio.xlsx` el archivo. `read_excel()` lee la primera hoja; con `sheet = "libro_codigos"` podemos leer otra.
+:::
+
+## Explorar la base
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| label: explorar1
+dim(notas)     # filas y columnas
+nrow(notas)    # n° de observaciones
+ncol(notas)    # n° de variables
+names(notas)   # nombres de las variables
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| label: explorar2
+glimpse(notas) # resumen de cada variable
+```
+
+```{r}
+#| label: view
+#| eval: false
+View(notas)    # abre la base como planilla
+```
+:::
+::::
+
+## Acceder a una variable con `$`
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+Con **`base$variable`** extraemos una columna. El resultado es un **vector**:
+
+```{r}
+#| label: dolar
+notas$edad
+mean(notas$edad)
+table(notas$curso)
+```
+
+::: nota
+`table()` cuenta cuántas veces aparece cada valor: hay **49** estudiantes en cada curso.
+:::
+
+## Importar otros formatos
+
+::: modulo
+Módulo 4 · Bases de datos
+:::
+
+| Formato | Extensión | Función | Paquete |
+|---|---|---|---|
+| Excel | `.xlsx`, `.xls` | `read_excel()` | `readxl` |
+| Texto separado por comas | `.csv` | `read_csv()` | `readr` (tidyverse) |
+| SPSS | `.sav` | `read_sav()` | `haven` |
+| Stata | `.dta` | `read_dta()` | `haven` |
+| R | `.rds` | `readRDS()` | R base |
+
+```{r}
+#| label: otros-formatos
+#| eval: false
+encuesta <- read_sav("input/encuesta.sav")       # ejemplo con SPSS
+casen    <- readRDS("input/casen_2024_practico.rds")
+```
+
+
+<!-- ================================================================== -->
+<!-- MÓDULO 5 · NATURALEZA DE LAS VARIABLES                              -->
+<!-- ================================================================== -->
+
+## {.seccion}
+
+::: seccion-texto
+Módulo 5<br>Naturaleza de las variables
+:::
+
+## Tipos de datos en R
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+| Tipo | En el tibble | Ejemplo | Uso típico |
+|---|---|---|---|
+| Numérico (*double*) | `<dbl>` | `5.5`, `16` | Notas, edad, ingresos |
+| Entero (*integer*) | `<int>` | `16L` | Conteos |
+| Texto (*character*) | `<chr>` | `"Femenino"` | Nombres, respuestas abiertas |
+| Lógico (*logical*) | `<lgl>` | `TRUE`, `FALSE` | Resultados de comparaciones |
+| Factor | `<fct>` | `Femenino` (nivel 1) | Variables categóricas |
+| Etiquetado | `<dbl+lbl>` | `888 [No rindió]` | Bases de SPSS / Stata |
+
+```{r}
+#| label: class
+class(notas$genero)
+class(notas$nota_matematicas)
+```
+
+## Variables numéricas
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+Con ellas podemos hacer **operaciones matemáticas**: sumar, promediar, calcular desviaciones.
+
+```{r}
+#| label: numericas
+summary(notas$edad)
+```
+
+<br>
+
+::: alerta
+**Cuidado:** que una variable esté guardada como número no significa que sea cuantitativa. Si `genero` estuviera codificada como `1 = Femenino` y `2 = Masculino`, su "promedio" (por ejemplo, 1,5) **no tendría ningún sentido**. Siempre hay que revisar el libro de códigos.
+:::
+
+## Variables de texto (*character*)
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+Guardan **texto**, siempre entre comillas. No se pueden promediar, pero sí **contar**:
+
+```{r}
+#| label: character
+head(notas$genero)
+table(notas$genero)
+```
+
+::: chico
+Para R, `"Femenino"`, `"femenino"` y `"FEMENINO"` son tres valores **distintos**. Esto es frecuente en respuestas abiertas o bases mal digitadas.
+:::
+
+## Variables lógicas
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+Solo toman los valores **`TRUE`** (verdadero) o **`FALSE`** (falso). Aparecen cuando hacemos **comparaciones**:
+
+:::: {.columns}
+::: {.column width="45%"}
+| Operador | Significa |
+|---|---|
+| `==` | igual a |
+| `!=` | distinto de |
+| `>`, `>=` | mayor (o igual) |
+| `<`, `<=` | menor (o igual) |
+:::
+::: {.column width="55%"}
+```{r}
+#| label: logicas
+5.5 >= 4
+"2°A" == "2°B"
+head(notas$nota_lenguaje >= 4)
+```
+:::
+::::
+
+::: nota
+Se usan muchísimo para **filtrar** casos (módulo 6). Además, `TRUE` vale 1 y `FALSE` vale 0, por lo que `mean()` de un vector lógico da una **proporción**.
+:::
+
+## Factores: variables categóricas
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+Un **factor** es una variable categórica con un conjunto fijo de **niveles** (*levels*) (cap. 15).
+
+```{r}
+#| label: factores
+genero_f <- factor(notas$genero)
+levels(genero_f)
+```
+
+Los factores permiten definir un **orden** que no sea el alfabético, útil para variables **ordinales**:
+
+```{r}
+#| label: factores-orden
+nivel <- c("Medio", "Bajo", "Alto", "Medio")
+factor(nivel)                                          # orden alfabético
+factor(nivel, levels = c("Bajo", "Medio", "Alto"))     # orden con sentido
+```
+
+## Valores perdidos: `NA`
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+En R, un dato faltante se representa con **`NA`** (*Not Available*). Es "contagioso": cualquier operación con un `NA` da `NA`.
+
+```{r}
+#| label: na
+notas_ejemplo <- c(5.5, NA, 6.1, 4.8)
+mean(notas_ejemplo)
+mean(notas_ejemplo, na.rm = TRUE)   # na.rm = TRUE: ignora los NA
+is.na(notas_ejemplo)                # ¿qué valores son NA?
+```
+
+::: nota
+Un `NA` no es un cero: significa **"no sabemos"** cuál es el valor.
+:::
+
+## El problema de los códigos 888 y 999
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+En nuestra base, los datos perdidos **no** están como `NA`, sino como **888** (*No rindió*) y **999** (*Sin información*). ¿Qué pasa si calculamos el promedio directamente?
+
+```{r}
+#| label: problema-888
+mean(notas$nota_matematicas)
+mean(notas$nota_lenguaje)
+```
+
+::: alerta
+Un promedio de **33** en una escala del 1 al 7. Esto pasa porque para R, 888 y 999 son números como cualquier otro. Antes de analizar, hay que **recodificarlos a `NA`** (lo haremos en el módulo 6).
+:::
+
+```{r}
+#| label: contar-888
+table(notas$nota_matematicas %in% c(888, 999))   # ¿cuántos casos tienen esos códigos?
+```
+
+## Variables etiquetadas: `haven_labelled`
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+Las bases de **SPSS y Stata** guardan **etiquetas**: un texto asociado a cada código. Al importarlas con `haven`, R las lee como `haven_labelled`.
+
+```{r}
+#| label: labelled
+nota_etiq <- labelled(c(5.5, 6.1, 888, 4.2, 999),
+                      labels = c("No rindió" = 888, "Sin información" = 999))
+nota_etiq
+```
+
+::: nota
+Es lo que veríamos si nuestra base de notas viniera en formato `.sav`. En la CASEN aparecen así casi todas las variables.
+:::
+
+## ¿Qué hacemos con una variable etiquetada?
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Ver sus etiquetas**
+
+```{r}
+#| label: labelled-ver
+attr(nota_etiq, "labels")
+```
+
+**Quitar las etiquetas** (queda el número)
+
+```{r}
+#| label: labelled-zap
+zap_labels(nota_etiq)
+```
+:::
+::: {.column width="50%"}
+**Convertir a factor** (queda la etiqueta)
+
+```{r}
+#| label: labelled-factor
+as_factor(nota_etiq)
+```
+:::
+::::
+
+::: nota
+Regla práctica: `zap_labels()` para variables que vamos a **promediar**; `as_factor()` para variables **categóricas** que vamos a contar o comparar.
+:::
+
+## Cambiar el tipo de una variable (coerción)
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+Las funciones `as.*()` transforman un tipo en otro:
+
+```{r}
+#| label: coercion
+as.numeric("5.5")             # texto a número
+as.character(16)              # número a texto
+as.numeric(c("6.1", "seis"))  # lo que no es número se vuelve NA
+```
+
+::: alerta
+Cuidado con `as.numeric()` sobre un **factor**: devuelve el número del nivel, no el valor original.
+:::
+
+```{r}
+#| label: coercion-factor
+edades_f <- factor(c("17", "15", "16"))
+as.numeric(edades_f)                  # ✘ posiciones de los niveles
+as.numeric(as.character(edades_f))    # ✔ valores originales
+```
+
+<!-- ================================================================== -->
+<!-- MÓDULO 6 · DPLYR                                                    -->
+<!-- ================================================================== -->
+
+## {.seccion}
+
+::: seccion-texto
+Módulo 6<br>Transformar datos con `dplyr`
+:::
+
+## La lógica de `dplyr`
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+`dplyr` (parte del `tidyverse`) ofrece **verbos** para transformar datos (cap. 5). Todos funcionan igual:
+
+1. El primer argumento es **una base de datos**.
+2. Los siguientes argumentos dicen **qué hacer**, usando los nombres de las variables **sin comillas** y **sin `$`**.
+3. El resultado es **una nueva base de datos**.
+
+| Verbo | Qué hace |
+|---|---|
+| `filter()` | Elige **filas** según una condición |
+| `arrange()` | **Ordena** las filas |
+| `select()` | Elige **columnas** |
+| `rename()` | Cambia **nombres** de columnas |
+| `mutate()` | **Crea o modifica** variables |
+| `group_by()` + `summarise()` | **Resume** por grupos |
+
+## El *pipe*: `%>%`
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+El *pipe* toma lo que está a su izquierda y lo pasa como **primer argumento** de la función de la derecha. Se lee **"y luego"**.
+
+:::: {.columns}
+::: {.column width="50%"}
+**Sin pipe**: se lee de adentro hacia afuera
+
+```{r}
+#| label: sin-pipe
+round(mean(c(5.5, 6.2, 4.8)), 1)
+```
+:::
+::: {.column width="50%"}
+**Con pipe**: se lee de izquierda a derecha
+
+```{r}
+#| label: con-pipe
+c(5.5, 6.2, 4.8) %>%
+  mean() %>%
+  round(1)
+```
+:::
+::::
+
+<br>
+
+::: nota
+**Atajo:** `Ctrl + Shift + M` escribe `%>%`. También existe el *pipe* nativo de R, `|>`, que funciona igual en casi todos los casos.
+:::
+
+## `filter()`: elegir filas
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+```{r}
+#| label: filter1
+notas %>%
+  filter(curso == "2°A")
+```
+
+## `filter()` con varias condiciones
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+**Y** (`&` o coma): se cumplen **ambas**
+
+```{r}
+#| label: filter-y
+notas %>%
+  filter(curso == "2°B" &
+         genero == "Femenino") %>%
+  nrow()
+```
+
+**O** (`|`): se cumple **al menos una**
+
+```{r}
+#| label: filter-o
+notas %>%
+  filter(edad == 15 | edad == 17) %>%
+  nrow()
+```
+:::
+::: {.column width="50%"}
+**`%in%`**: el valor está en una lista
+
+```{r}
+#| label: filter-in
+notas %>%
+  filter(nota_matematicas %in% c(888, 999)) %>%
+  select(id, curso, nota_matematicas)
+```
+:::
+::::
+
+## `arrange()`: ordenar filas
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+De menor a mayor
+
+```{r}
+#| label: arrange1
+notas %>%
+  arrange(nota_lenguaje) %>%
+  select(id, genero, nota_lenguaje) %>%
+  head(4)
+```
+:::
+::: {.column width="50%"}
+De mayor a menor, con `desc()`
+
+```{r}
+#| label: arrange2
+notas %>%
+  arrange(desc(nota_lenguaje)) %>%
+  select(id, genero, nota_lenguaje) %>%
+  head(4)
+```
+:::
+::::
+
+## `select()`: elegir columnas
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+Por nombre
+
+```{r}
+#| label: select1
+notas %>%
+  select(id, genero, nota_lenguaje) %>%
+  head(3)
+```
+
+Con funciones de ayuda
+
+```{r}
+#| label: select3
+notas %>%
+  select(id, starts_with("nota_")) %>%
+  head(3)
+```
+:::
+::: {.column width="50%"}
+Quitar columnas con `-`
+
+```{r}
+#| label: select2
+notas %>%
+  select(-curso, -edad, -nota_matematicas) %>%
+  head(3)
+```
+
+::: chico
+Otras funciones de ayuda: `ends_with()`, `contains()`, `everything()`.
+:::
+:::
+::::
+
+## `rename()`: cambiar nombres
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+La sintaxis es **`nombre_nuevo = nombre_viejo`**:
+
+```{r}
+#| label: rename
+notas %>%
+  rename(mate = nota_matematicas,
+         leng = nota_lenguaje) %>%
+  head(3)
+```
+
+::: nota
+Nombres cortos y sin espacios ni tildes facilitan el trabajo. Ojo: si no guardamos el resultado con `<-`, la base original **no cambia**.
+:::
+
+## `mutate()`: recodificar 888 y 999 a `NA`
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+`mutate()` crea o modifica variables. Con `if_else()` reemplazamos los códigos por `NA`:
+
+```{r}
+#| label: mutate-na
+notas <- notas %>%
+  mutate(nota_matematicas = if_else(nota_matematicas %in% c(888, 999), NA, nota_matematicas),
+         nota_lenguaje    = if_else(nota_lenguaje    %in% c(888, 999), NA, nota_lenguaje))
+
+summary(notas$nota_matematicas)
+```
+
+::: chico
+`if_else(condición, valor si es verdadero, valor si es falso)`. Ahora el máximo es 7 y aparecen los `NA's`.
+:::
+
+::: nota
+Esta vez **sí guardamos** el resultado con `notas <-`: la base queda corregida para lo que sigue.
+:::
+
+## `mutate()`: crear variables nuevas
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+```{r}
+#| label: mutate-nuevas
+notas <- notas %>%
+  mutate(promedio   = (nota_matematicas + nota_lenguaje) / 2,
+         aprueba_mate = if_else(nota_matematicas >= 4, "Aprueba", "Reprueba"),
+         genero     = factor(genero))
+
+notas %>%
+  select(id, genero, nota_matematicas, nota_lenguaje, promedio, aprueba_mate) %>%
+  head(5)
+```
+
+## `mutate()` con `case_when()`
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+Para recodificar en **más de dos categorías**, usamos `case_when()`: cada línea es `condición ~ valor`.
+
+```{r}
+#| label: case-when
+notas <- notas %>%
+  mutate(tramo_lenguaje = case_when(nota_lenguaje <  4   ~ "Insuficiente",
+                                    nota_lenguaje <  5.5 ~ "Suficiente",
+                                    nota_lenguaje >= 5.5 ~ "Destacado",
+                                    TRUE ~ NA_character_)) # Dependiendo de la naturaleza de la variable ponemos NA_real_, NA_complex_, NA_integer_
+
+table(notas$tramo_lenguaje, useNA = "ifany")
+```
+
+::: chico
+Las condiciones se evalúan **en orden**: un 4,8 no cumple la primera, sí la segunda, y ahí se queda. Los `NA` siguen siendo `NA`.
+:::
+
+## `summarise()`: resumir
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+`summarise()` reduce toda la base a **una fila** con los estadísticos que pidamos:
+
+```{r}
+#| label: summarise
+notas %>%
+  summarise(n          = n(),
+            media_mate = mean(nota_matematicas, na.rm = TRUE),
+            media_leng = mean(nota_lenguaje, na.rm = TRUE),
+            de_leng    = sd(nota_lenguaje, na.rm = TRUE))
+```
+
+::: nota
+Ahora que recodificamos los 888 y 999, los promedios **sí tienen sentido**. Y no olvidar `na.rm = TRUE`.
+:::
+
+## `group_by()` + `summarise()`: resumir por grupos
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+La combinación más poderosa de `dplyr`: calcular estadísticos **para cada grupo**.
+
+```{r}
+#| label: group-by
+notas %>%
+  group_by(genero) %>%
+  summarise(n          = n(),
+            media_mate = mean(nota_matematicas, na.rm = TRUE),
+            media_leng = mean(nota_lenguaje, na.rm = TRUE)) %>% 
+  ungroup()
+```
+
+::: grande
+¿Qué observan?
+:::
+
+## Agrupar por más de una variable
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+```{r}
+#| label: group-by2
+notas %>%
+  group_by(curso, genero) %>%
+  summarise(media_mate = round(mean(nota_matematicas, na.rm = TRUE), 2),
+            media_leng = round(mean(nota_lenguaje, na.rm = TRUE), 2),
+            .groups = "drop")
+```
+
+::: nota
+En **ambos cursos** los hombres tienen mejores notas en Matemáticas y las mujeres en Lenguaje. ¿Cómo podríamos explicar sociológicamente estas brechas?
+:::
+
+## `count()`: contar casos
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+`count()` es un atajo para `group_by()` + `summarise(n = n())`:
+
+```{r}
+#| label: count
+notas %>%
+  count(genero, aprueba_mate)
+```
+
+```{r}
+#| label: count-prop
+notas %>%
+  filter(!is.na(aprueba_mate)) %>%
+  group_by(genero) %>%
+  summarise(pct_aprueba = mean(aprueba_mate == "Aprueba") * 100)
+```
+
+## Todo junto: una pregunta de investigación
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+**¿Las brechas de género en las notas son iguales en ambos cursos?**
+
+```{r}
+#| label: integrador
+brechas <- notas %>%
+  filter(!is.na(nota_matematicas), !is.na(nota_lenguaje)) %>%   # solo casos válidos
+  group_by(curso, genero) %>%                                   # por curso y género
+  summarise(n = n(),
+            mate = mean(nota_matematicas),
+            leng = mean(nota_lenguaje),
+            .groups = "drop") %>%
+  mutate(diferencia = round(mate - leng, 2)) %>%                # mate - lenguaje
+  arrange(curso, desc(diferencia))
+
+brechas
+```
+
+## Un adelanto: visualizar la brecha
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+```{r}
+#| label: grafico
+#| echo: false
+#| fig-width: 11
+#| fig-height: 5
+#| fig-align: center
+notas %>%
+  select(genero, Matemáticas = nota_matematicas, Lenguaje = nota_lenguaje) %>%
+  pivot_longer(-genero, names_to = "asignatura", values_to = "nota") %>%
+  filter(!is.na(nota)) %>%
+  group_by(asignatura, genero) %>%
+  summarise(nota = mean(nota), .groups = "drop") %>%
+  ggplot(aes(asignatura, nota, fill = genero)) +
+  geom_col(position = position_dodge(width = 0.7), width = 0.65) +
+  geom_text(aes(label = format(round(nota, 2), decimal.mark = ",")),
+            position = position_dodge(width = 0.7), vjust = -0.5, size = 6) +
+  scale_fill_manual(values = c("Femenino" = "#4472c4", "Masculino" = "#ef8a3a")) +
+  scale_y_continuous(limits = c(0, 7), breaks = 1:7) +
+  labs(x = NULL, y = "Nota promedio", fill = NULL) +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "top", panel.grid.major.x = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+
+## Guardar resultados en `output/`
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+Los resultados se guardan en la carpeta **`output/`**, nunca sobre los datos originales de `input/`:
+
+```{r}
+#| label: guardar
+#| eval: false
+write_csv(brechas, "output/brechas_genero.csv")   # tabla de resultados
+saveRDS(notas, "output/notas_limpia.rds")         # base limpia, para seguir trabajando
+```
+
+<br>
+
+::: nota
+Así, la carpeta `input/` siempre conserva los datos **tal como los recibimos**, y cualquier persona puede reproducir el análisis corriendo el script desde el principio.
+:::
+
+
+## Resumen
+
+::: modulo
+Cierre
+:::
+
+| Módulo | Lo central |
+|---|---|
+| 1 · RStudio | Trabajar **siempre** en un script, dentro de un proyecto |
+| 2 · Programación | `objeto <- valor`; `funcion(argumentos)`; `c()` crea vectores |
+| 3 · Librerías | `install.packages()` una vez; `library()` o `p_load()` cada sesión |
+| 4 · Bases de datos | Fila = observación, columna = variable, celda = valor |
+| 5 · Variables | Revisar el tipo; `NA`, códigos perdidos y etiquetas |
+| 6 · `dplyr` | `filter`, `select`, `mutate`, `group_by` + `summarise`, unidos con `%>%` |
+
+## Para seguir aprendiendo
+
+<br>
+
+- **R para Ciencia de Datos** (en español): <https://es.r4ds.hadley.nz/>
+  - Cap. 4 y 6: flujo de trabajo y scripts
+  - Cap. 5: transformación de datos con `dplyr`
+  - Cap. 10 a 12: tibbles, importación y datos ordenados
+  - Cap. 15: factores
+- Documentación de `haven`: <https://haven.tidyverse.org/>
+- Hoja de referencia de `dplyr` (*cheatsheet*): **Help → Cheat Sheets** en RStudio
+
+<br>
+
