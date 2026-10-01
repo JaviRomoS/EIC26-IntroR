@@ -85,23 +85,7 @@ Filtrar, seleccionar, crear variables y resumir por grupos.
 Esta cápsula se basa en **R para Ciencia de Datos** (Wickham y Grolemund), traducción al español: <https://es.r4ds.hadley.nz/>
 :::
 
-## Antes de empezar: descarguen el proyecto
-
-<br>
-
-::: centrado
-[⬇ Descargar intro_R.zip](intro_R.zip){.boton}
-:::
-
-<br>
-
-1. Descarguen y **descompriman** la carpeta (clic derecho → *Extraer todo*).
-2. Abran **`intro_R.Rproj`** con doble clic. Se abre RStudio con todo listo.
-3. Abran **`script/capsula_intro_R.R`** y sigan la cápsula desde ahí.
-
-::: nota
-**Dentro de la carpeta:** `input/` (base de datos) · `script/` (código de la cápsula) · `output/` (donde guardaremos resultados)
-:::
+## Antes de empezar: crear el proyecto
 
 <!-- ================================================================== -->
 <!-- MÓDULO 1 · INTERFAZ DE RSTUDIO                                      -->
