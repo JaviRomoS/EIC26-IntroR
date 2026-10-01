@@ -23,15 +23,6 @@ Cápsula introductoria a R y RStudio para estudiantes de segundo año de Sociolo
 | `intro_R/` | Proyecto de RStudio para los estudiantes |
 | `intro_R.zip` | El mismo proyecto comprimido (se descarga desde la presentación) |
 
-### Proyecto de los estudiantes (`intro_R/`)
-
-```
-intro_R/
-├── intro_R.Rproj
-├── input/notas_colegio.xlsx     base ficticia (98 estudiantes, 6 variables) + libro de códigos
-├── script/capsula_intro_R.R     código de la cápsula, módulo a módulo
-└── output/                      aquí se guardan los resultados
-```
 
 ### Base de datos (`notas_colegio.xlsx`)
 
@@ -45,21 +36,3 @@ intro_R/
 | `nota_lenguaje` | Promedio anual en Lenguaje | 1,5 a 7,0 · 888 = No rindió · 999 = Sin información |
 
 Los datos son ficticios y fueron simulados con una brecha de género (mejores notas de hombres en Matemáticas y de mujeres en Lenguaje) para fines docentes.
-
-## Publicar en GitHub Pages
-
-1. Crear el repositorio en GitHub y subir esta carpeta.
-2. En el repositorio: **Settings → Pages → Build and deployment**: *Deploy from a branch*, rama `main`, carpeta **`/docs`**.
-3. La presentación queda en `https://<usuario>.github.io/<repositorio>/`.
-
-## Modificar la presentación
-
-Editar `index.qmd` y renderizar desde la terminal de RStudio (en la carpeta del repositorio):
-
-```bash
-quarto render
-```
-
-Esto actualiza `docs/`. Luego hacer commit y push.
-
-Si se modifica el proyecto `intro_R/`, volver a crear `intro_R.zip` (sin la carpeta `.Rproj.user/` ni el contenido de `output/`) antes de renderizar.
