@@ -707,62 +707,6 @@
 </div>
 </section>
 <section class="slide level2">
-<h2>Nuestra base de datos</h2>
-<div class="modulo">
-<p>Módulo 4 · Bases de datos</p>
-</div>
-<p>Notas de <strong>98 estudiantes</strong> de dos cursos de un colegio (2°A y 2°B). Datos <strong>ficticios</strong>.</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Descripción</th>
-<th>Valores</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>id</code></td>
-<td>Identificador del estudiante</td>
-<td>1 a 98</td>
-</tr>
-<tr class="even">
-<td><code>curso</code></td>
-<td>Curso</td>
-<td>2°A, 2°B</td>
-</tr>
-<tr class="odd">
-<td><code>genero</code></td>
-<td>Género</td>
-<td>Femenino, Masculino</td>
-</tr>
-<tr class="even">
-<td><code>edad</code></td>
-<td>Edad en años</td>
-<td>15 a 17</td>
-</tr>
-<tr class="odd">
-<td><code>nota_matematicas</code></td>
-<td>Promedio anual en Matemáticas</td>
-<td>1,5 a 7,0 · <strong>888</strong> = No rindió · <strong>999</strong> = Sin información</td>
-</tr>
-<tr class="even">
-<td><code>nota_lenguaje</code></td>
-<td>Promedio anual en Lenguaje</td>
-<td>1,5 a 7,0 · <strong>888</strong> = No rindió · <strong>999</strong> = Sin información</td>
-</tr>
-</tbody>
-</table>
-<div class="nota">
-<p>La hoja <code>libro_codigos</code> del Excel tiene esta misma descripción. <strong>Siempre</strong> hay que revisar el libro de códigos antes de analizar una base.</p>
-</div>
-</section>
-<section class="slide level2">
 <h2>Variable, valor y observación</h2>
 <div class="modulo">
 <p>Módulo 4 · Bases de datos</p>
@@ -922,39 +866,60 @@
 </div>
 </section>
 <section class="slide level2">
-<h2><em>Tibbles</em>: data frames modernos</h2>
+<h2>Nuestra base de datos</h2>
 <div class="modulo">
 <p>Módulo 4 · Bases de datos</p>
 </div>
-<p>El <code>tidyverse</code> usa <strong>tibbles</strong> (cap. 10): data frames que se imprimen de forma más ordenada.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="fu">tibble</span>(</span>
-<span id="cb65-2"><a href=""></a>  <span class="at">estudiante =</span> <span class="fu">c</span>(<span class="st">"Ana"</span>, <span class="st">"Benja"</span>, <span class="st">"Carla"</span>),</span>
-<span id="cb65-3"><a href=""></a>  <span class="at">curso      =</span> <span class="fu">c</span>(<span class="st">"2°A"</span>, <span class="st">"2°B"</span>, <span class="st">"2°A"</span>),</span>
-<span id="cb65-4"><a href=""></a>  <span class="at">nota_mate  =</span> <span class="fu">c</span>(<span class="fl">6.1</span>, <span class="fl">5.4</span>, <span class="fl">4.9</span>)</span>
-<span id="cb65-5"><a href=""></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  estudiante curso nota_mate
-  &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt;
-1 Ana        2°A         6.1
-2 Benja      2°B         5.4
-3 Carla      2°A         4.9</code></pre>
+<p>Notas de <strong>98 estudiantes</strong> de dos cursos de un colegio (2°A y 2°B). Datos <strong>ficticios</strong>.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Descripción</th>
+<th>Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>Identificador del estudiante</td>
+<td>1 a 98</td>
+</tr>
+<tr class="even">
+<td><code>curso</code></td>
+<td>Curso</td>
+<td>2°A, 2°B</td>
+</tr>
+<tr class="odd">
+<td><code>genero</code></td>
+<td>Género</td>
+<td>Femenino, Masculino</td>
+</tr>
+<tr class="even">
+<td><code>edad</code></td>
+<td>Edad en años</td>
+<td>15 a 17</td>
+</tr>
+<tr class="odd">
+<td><code>nota_matematicas</code></td>
+<td>Promedio anual en Matemáticas</td>
+<td>1,5 a 7,0 · <strong>888</strong> = No rindió · <strong>999</strong> = Sin información</td>
+</tr>
+<tr class="even">
+<td><code>nota_lenguaje</code></td>
+<td>Promedio anual en Lenguaje</td>
+<td>1,5 a 7,0 · <strong>888</strong> = No rindió · <strong>999</strong> = Sin información</td>
+</tr>
+</tbody>
+</table>
+<div class="nota">
+<p>La hoja <code>libro_codigos</code> del Excel tiene esta misma descripción. <strong>Siempre</strong> hay que revisar el libro de códigos antes de analizar una base.</p>
 </div>
-</div>
-</div><div class="column" style="width:50%;">
-<p>Al imprimir un tibble vemos:</p>
-<ul>
-<li>El <strong>número de filas y columnas</strong> (<code>3 x 3</code>).</li>
-<li>El <strong>tipo</strong> de cada variable bajo su nombre: <code>&lt;chr&gt;</code> texto, <code>&lt;dbl&gt;</code> número.</li>
-<li>Solo las primeras 10 filas (no inunda la consola).</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href=""></a><span class="fu">as_tibble</span>(mi_base)   <span class="co"># convierte un data frame en tibble</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div></div>
 </section>
 <section class="slide level2">
 <h2>Importar datos desde Excel</h2>
@@ -963,11 +928,11 @@
 </div>
 <p>Rara vez escribimos los datos a mano. Más bien, los <strong>importamos</strong> desde un archivo. Para Excel usamos <code>read_excel()</code> del paquete <code>readxl</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a><span class="fu">library</span>(readxl)</span>
-<span id="cb68-2"><a href=""></a>notas <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"input/notas_colegio.xlsx"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="fu">library</span>(readxl)</span>
+<span id="cb65-2"><a href=""></a>notas <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"input/notas_colegio.xlsx"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href=""></a>notas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a>notas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 98 × 6
       id curso genero     edad nota_matematicas nota_lenguaje
@@ -997,19 +962,19 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href=""></a><span class="fu">dim</span>(notas)     <span class="co"># filas y columnas</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a><span class="fu">dim</span>(notas)     <span class="co"># filas y columnas</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 98  6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href=""></a><span class="fu">nrow</span>(notas)    <span class="co"># n° de observaciones</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href=""></a><span class="fu">nrow</span>(notas)    <span class="co"># n° de observaciones</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 98</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href=""></a><span class="fu">ncol</span>(notas)    <span class="co"># n° de variables</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href=""></a><span class="fu">ncol</span>(notas)    <span class="co"># n° de variables</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href=""></a><span class="fu">names</span>(notas)   <span class="co"># nombres de las variables</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href=""></a><span class="fu">names</span>(notas)   <span class="co"># nombres de las variables</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "id"               "curso"            "genero"           "edad"            
 [5] "nota_matematicas" "nota_lenguaje"   </code></pre>
@@ -1017,7 +982,7 @@
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href=""></a><span class="fu">glimpse</span>(notas) <span class="co"># resumen de cada variable</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href=""></a><span class="fu">glimpse</span>(notas) <span class="co"># resumen de cada variable</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 98
 Columns: 6
@@ -1030,7 +995,7 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a><span class="fu">View</span>(notas)    <span class="co"># abre la base como planilla</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href=""></a><span class="fu">View</span>(notas)    <span class="co"># abre la base como planilla</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -1041,18 +1006,18 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 </div>
 <p>Con <strong><code>base$variable</code></strong> extraemos una columna. El resultado es un <strong>vector</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href=""></a>notas<span class="sc">$</span>edad</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href=""></a>notas<span class="sc">$</span>edad</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 16 16 16 17 15 16 15 16 17 16 15 16 16 15 16 16 16 15 15 16 17 16 16 16 17
 [26] 16 15 16 16 16 17 15 16 16 16 16 16 16 16 17 17 16 15 16 16 15 16 16 15 15
 [51] 17 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 16 17 15 15 17 16 17 16
 [76] 16 17 17 15 16 17 16 15 17 16 16 15 16 16 16 16 16 16 15 15 15 16 17</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href=""></a><span class="fu">mean</span>(notas<span class="sc">$</span>edad)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a><span class="fu">mean</span>(notas<span class="sc">$</span>edad)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15.95918</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>curso)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>curso)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 2°A 2°B 
@@ -1117,8 +1082,8 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 </tbody>
 </table>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a>encuesta <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"input/encuesta.sav"</span>)       <span class="co"># ejemplo con SPSS</span></span>
-<span id="cb88-2"><a href=""></a>casen    <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/casen_2024_practico.rds"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href=""></a>encuesta <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"input/encuesta.sav"</span>)       <span class="co"># ejemplo con SPSS</span></span>
+<span id="cb85-2"><a href=""></a>casen    <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/casen_2024_practico.rds"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- ================================================================== -->
 <!-- MÓDULO 5 · NATURALEZA DE LAS VARIABLES                              -->
@@ -1158,22 +1123,10 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 <td>Notas, edad, ingresos</td>
 </tr>
 <tr class="even">
-<td>Entero (<em>integer</em>)</td>
-<td><code>&lt;int&gt;</code></td>
-<td><code>16L</code></td>
-<td>Conteos</td>
-</tr>
-<tr class="odd">
 <td>Texto (<em>character</em>)</td>
 <td><code>&lt;chr&gt;</code></td>
 <td><code>"Femenino"</code></td>
 <td>Nombres, respuestas abiertas</td>
-</tr>
-<tr class="even">
-<td>Lógico (<em>logical</em>)</td>
-<td><code>&lt;lgl&gt;</code></td>
-<td><code>TRUE</code>, <code>FALSE</code></td>
-<td>Resultados de comparaciones</td>
 </tr>
 <tr class="odd">
 <td>Factor</td>
@@ -1187,14 +1140,26 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 <td><code>888 [No rindió]</code></td>
 <td>Bases de SPSS / Stata</td>
 </tr>
+<tr class="odd">
+<td>Lógico (<em>logical</em>)</td>
+<td><code>&lt;lgl&gt;</code></td>
+<td><code>TRUE</code>, <code>FALSE</code></td>
+<td>Resultados de comparaciones</td>
+</tr>
+<tr class="even">
+<td>Entero (<em>integer</em>)</td>
+<td><code>&lt;int&gt;</code></td>
+<td><code>16L</code></td>
+<td>Conteos</td>
+</tr>
 </tbody>
 </table>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href=""></a><span class="fu">class</span>(notas<span class="sc">$</span>genero)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href=""></a><span class="fu">class</span>(notas<span class="sc">$</span>genero)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href=""></a><span class="fu">class</span>(notas<span class="sc">$</span>nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href=""></a><span class="fu">class</span>(notas<span class="sc">$</span>nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
@@ -1207,7 +1172,7 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 </div>
 <p>Con ellas podemos hacer <strong>operaciones matemáticas</strong>: sumar, promediar, calcular desviaciones.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href=""></a><span class="fu">summary</span>(notas<span class="sc">$</span>edad)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a><span class="fu">summary</span>(notas<span class="sc">$</span>edad)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   15.00   16.00   16.00   15.96   16.00   17.00 </code></pre>
@@ -1225,11 +1190,11 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 </div>
 <p>Guardan <strong>texto</strong>, siempre entre comillas. No se pueden promediar, pero sí <strong>contar</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href=""></a><span class="fu">head</span>(notas<span class="sc">$</span>genero)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a><span class="fu">head</span>(notas<span class="sc">$</span>genero)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Masculino" "Masculino" "Masculino" "Masculino" "Femenino"  "Femenino" </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>genero)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>genero)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  Femenino Masculino 
@@ -1241,81 +1206,27 @@ $ nota_lenguaje    &lt;dbl&gt; 5.7, 5.3, 5.2, 5.0, 6.7, 6.1, 6.7, 6.8, 6.3, 5.6,
 </div>
 </section>
 <section class="slide level2">
-<h2>Variables lógicas</h2>
-<div class="modulo">
-<p>Módulo 5 · Variables</p>
-</div>
-<p>Solo toman los valores <strong><code>TRUE</code></strong> (verdadero) o <strong><code>FALSE</code></strong> (falso). Aparecen cuando hacemos <strong>comparaciones</strong>:</p>
-<div class="columns">
-<div class="column" style="width:45%;">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Operador</th>
-<th>Significa</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>==</code></td>
-<td>igual a</td>
-</tr>
-<tr class="even">
-<td><code>!=</code></td>
-<td>distinto de</td>
-</tr>
-<tr class="odd">
-<td><code>&gt;</code>, <code>&gt;=</code></td>
-<td>mayor (o igual)</td>
-</tr>
-<tr class="even">
-<td><code>&lt;</code>, <code>&lt;=</code></td>
-<td>menor (o igual)</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column" style="width:55%;">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href=""></a><span class="fl">5.5</span> <span class="sc">&gt;=</span> <span class="dv">4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href=""></a><span class="st">"2°A"</span> <span class="sc">==</span> <span class="st">"2°B"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href=""></a><span class="fu">head</span>(notas<span class="sc">$</span>nota_lenguaje <span class="sc">&gt;=</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
-</div>
-</div>
-</div></div>
-<div class="nota">
-<p>Se usan muchísimo para <strong>filtrar</strong> casos (módulo 6). Además, <code>TRUE</code> vale 1 y <code>FALSE</code> vale 0, por lo que <code>mean()</code> de un vector lógico da una <strong>proporción</strong>.</p>
-</div>
-</section>
-<section class="slide level2">
 <h2>Factores: variables categóricas</h2>
 <div class="modulo">
 <p>Módulo 5 · Variables</p>
 </div>
 <p>Un <strong>factor</strong> es una variable categórica con un conjunto fijo de <strong>niveles</strong> (<em>levels</em>) (cap. 15).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href=""></a>genero_f <span class="ot">&lt;-</span> <span class="fu">factor</span>(notas<span class="sc">$</span>genero)</span>
-<span id="cb105-2"><a href=""></a><span class="fu">levels</span>(genero_f)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a>genero_f <span class="ot">&lt;-</span> <span class="fu">factor</span>(notas<span class="sc">$</span>genero)</span>
+<span id="cb96-2"><a href=""></a><span class="fu">levels</span>(genero_f)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Femenino"  "Masculino"</code></pre>
 </div>
 </div>
 <p>Los factores permiten definir un <strong>orden</strong> que no sea el alfabético, útil para variables <strong>ordinales</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href=""></a>nivel <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Medio"</span>, <span class="st">"Bajo"</span>, <span class="st">"Alto"</span>, <span class="st">"Medio"</span>)</span>
-<span id="cb107-2"><a href=""></a><span class="fu">factor</span>(nivel)                                          <span class="co"># orden alfabético</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href=""></a>nivel <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Medio"</span>, <span class="st">"Bajo"</span>, <span class="st">"Alto"</span>, <span class="st">"Medio"</span>)</span>
+<span id="cb98-2"><a href=""></a><span class="fu">factor</span>(nivel)                                          <span class="co"># orden alfabético</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Medio Bajo  Alto  Medio
 Levels: Alto Bajo Medio</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href=""></a><span class="fu">factor</span>(nivel, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, <span class="st">"Medio"</span>, <span class="st">"Alto"</span>))     <span class="co"># orden con sentido</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href=""></a><span class="fu">factor</span>(nivel, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, <span class="st">"Medio"</span>, <span class="st">"Alto"</span>))     <span class="co"># orden con sentido</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Medio Bajo  Alto  Medio
 Levels: Bajo Medio Alto</code></pre>
@@ -1329,16 +1240,16 @@ Levels: Bajo Medio Alto</code></pre>
 </div>
 <p>En R, un dato faltante se representa con <strong><code>NA</code></strong> (<em>Not Available</em>). Es “contagioso”: cualquier operación con un <code>NA</code> da <code>NA</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href=""></a>notas_ejemplo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">6.1</span>, <span class="fl">4.8</span>)</span>
-<span id="cb111-2"><a href=""></a><span class="fu">mean</span>(notas_ejemplo)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href=""></a>notas_ejemplo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">6.1</span>, <span class="fl">4.8</span>)</span>
+<span id="cb102-2"><a href=""></a><span class="fu">mean</span>(notas_ejemplo)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href=""></a><span class="fu">mean</span>(notas_ejemplo, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   <span class="co"># na.rm = TRUE: ignora los NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a><span class="fu">mean</span>(notas_ejemplo, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   <span class="co"># na.rm = TRUE: ignora los NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.466667</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href=""></a><span class="fu">is.na</span>(notas_ejemplo)                <span class="co"># ¿qué valores son NA?</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href=""></a><span class="fu">is.na</span>(notas_ejemplo)                <span class="co"># ¿qué valores son NA?</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE FALSE</code></pre>
 </div>
@@ -1354,11 +1265,11 @@ Levels: Bajo Medio Alto</code></pre>
 </div>
 <p>En nuestra base, los datos perdidos <strong>no</strong> están como <code>NA</code>, sino como <strong>888</strong> (<em>No rindió</em>) y <strong>999</strong> (<em>Sin información</em>). ¿Qué pasa si calculamos el promedio directamente?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href=""></a><span class="fu">mean</span>(notas<span class="sc">$</span>nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href=""></a><span class="fu">mean</span>(notas<span class="sc">$</span>nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33.38163</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href=""></a><span class="fu">mean</span>(notas<span class="sc">$</span>nota_lenguaje)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href=""></a><span class="fu">mean</span>(notas<span class="sc">$</span>nota_lenguaje)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33.5051</code></pre>
 </div>
@@ -1367,7 +1278,7 @@ Levels: Bajo Medio Alto</code></pre>
 <p>Un promedio de <strong>33</strong> en una escala del 1 al 7. Esto pasa porque para R, 888 y 999 son números como cualquier otro. Antes de analizar, hay que <strong>recodificarlos a <code>NA</code></strong> (lo haremos en el módulo 6).</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>))   <span class="co"># ¿cuántos casos tienen esos códigos?</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>))   <span class="co"># ¿cuántos casos tienen esos códigos?</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 FALSE  TRUE 
@@ -1382,9 +1293,9 @@ FALSE  TRUE
 </div>
 <p>Las bases de <strong>SPSS y Stata</strong> guardan <strong>etiquetas</strong>: un texto asociado a cada código. Al importarlas con <code>haven</code>, R las lee como <code>haven_labelled</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href=""></a>nota_etiq <span class="ot">&lt;-</span> <span class="fu">labelled</span>(<span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">6.1</span>, <span class="dv">888</span>, <span class="fl">4.2</span>, <span class="dv">999</span>),</span>
-<span id="cb123-2"><a href=""></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No rindió"</span> <span class="ot">=</span> <span class="dv">888</span>, <span class="st">"Sin información"</span> <span class="ot">=</span> <span class="dv">999</span>))</span>
-<span id="cb123-3"><a href=""></a>nota_etiq</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href=""></a>nota_etiq <span class="ot">&lt;-</span> <span class="fu">labelled</span>(<span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">6.1</span>, <span class="dv">888</span>, <span class="fl">4.2</span>, <span class="dv">999</span>),</span>
+<span id="cb114-2"><a href=""></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No rindió"</span> <span class="ot">=</span> <span class="dv">888</span>, <span class="st">"Sin información"</span> <span class="ot">=</span> <span class="dv">999</span>))</span>
+<span id="cb114-3"><a href=""></a>nota_etiq</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;labelled&lt;double&gt;[5]&gt;
 [1]   5.5   6.1 888.0   4.2 999.0
@@ -1408,7 +1319,7 @@ Labels:
 <div class="column" style="width:50%;">
 <p><strong>Ver sus etiquetas</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href=""></a><span class="fu">attr</span>(nota_etiq, <span class="st">"labels"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href=""></a><span class="fu">attr</span>(nota_etiq, <span class="st">"labels"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      No rindió Sin información 
             888             999 </code></pre>
@@ -1416,7 +1327,7 @@ Labels:
 </div>
 <p><strong>Quitar las etiquetas</strong> (queda el número)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href=""></a><span class="fu">zap_labels</span>(nota_etiq)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href=""></a><span class="fu">zap_labels</span>(nota_etiq)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]   5.5   6.1 888.0   4.2 999.0</code></pre>
 </div>
@@ -1424,7 +1335,7 @@ Labels:
 </div><div class="column" style="width:50%;">
 <p><strong>Convertir a factor</strong> (queda la etiqueta)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href=""></a><span class="fu">as_factor</span>(nota_etiq)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href=""></a><span class="fu">as_factor</span>(nota_etiq)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5             6.1             No rindió       4.2            
 [5] Sin información
@@ -1443,15 +1354,15 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>Las funciones <code>as.*()</code> transforman un tipo en otro:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="st">"5.5"</span>)             <span class="co"># texto a número</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="st">"5.5"</span>)             <span class="co"># texto a número</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href=""></a><span class="fu">as.character</span>(<span class="dv">16</span>)              <span class="co"># número a texto</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href=""></a><span class="fu">as.character</span>(<span class="dv">16</span>)              <span class="co"># número a texto</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "16"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"6.1"</span>, <span class="st">"seis"</span>))  <span class="co"># lo que no es número se vuelve NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"6.1"</span>, <span class="st">"seis"</span>))  <span class="co"># lo que no es número se vuelve NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.1  NA</code></pre>
 </div>
@@ -1460,16 +1371,28 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <p>Cuidado con <code>as.numeric()</code> sobre un <strong>factor</strong>: devuelve el número del nivel, no el valor original.</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href=""></a>edades_f <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"17"</span>, <span class="st">"15"</span>, <span class="st">"16"</span>))</span>
-<span id="cb137-2"><a href=""></a><span class="fu">as.numeric</span>(edades_f)                  <span class="co"># ✘ posiciones de los niveles</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href=""></a>edades_f <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"17"</span>, <span class="st">"15"</span>, <span class="st">"16"</span>))</span>
+<span id="cb128-2"><a href=""></a><span class="fu">as.numeric</span>(edades_f)                  <span class="co"># ✘ posiciones de los niveles</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 1 2</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(edades_f))    <span class="co"># ✔ valores originales</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(edades_f))    <span class="co"># ✔ valores originales</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17 15 16</code></pre>
 </div>
 </div>
+</section>
+<section class="slide level2">
+<h2>Entonces, ¿Qué sigue para nuestro análisis?</h2>
+<div class="modulo">
+<p>Módulo 5 · Variables</p>
+</div>
+<ol type="1">
+<li>Seleccionar variables (por ejemplo, la variable id no nos servirá para el análisis)</li>
+<li>Transformar variables (recodificar los 888 y 999 como NA)</li>
+<li>Crear variables nuevas que nos puedan servir en el análisis</li>
+<li>Crear tablas para analizar resultados</li>
+</ol>
 <!-- ================================================================== -->
 <!-- MÓDULO 6 · DPLYR                                                    -->
 <!-- ================================================================== -->
@@ -1536,7 +1459,7 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="column" style="width:50%;">
 <p><strong>Sin pipe</strong>: se lee de adentro hacia afuera</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href=""></a><span class="fu">round</span>(<span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">6.2</span>, <span class="fl">4.8</span>)), <span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href=""></a><span class="fu">round</span>(<span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">6.2</span>, <span class="fl">4.8</span>)), <span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
@@ -1544,9 +1467,9 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div><div class="column" style="width:50%;">
 <p><strong>Con pipe</strong>: se lee de izquierda a derecha</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href=""></a><span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">6.2</span>, <span class="fl">4.8</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb143-2"><a href=""></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb143-3"><a href=""></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href=""></a><span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">6.2</span>, <span class="fl">4.8</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb134-2"><a href=""></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb134-3"><a href=""></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
@@ -1554,8 +1477,60 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div></div>
 <p><br></p>
 <div class="nota">
-<p><strong>Atajo:</strong> <code>Ctrl + Shift + M</code> escribe <code>%&gt;%</code>. También existe el <em>pipe</em> nativo de R, <code>|&gt;</code>, que funciona igual en casi todos los casos.</p>
+<p><strong>Atajo:</strong> <code>Ctrl + Shift + M</code> escribe <code>%&gt;%</code>. También existe el <em>pipe</em> nativo de R, <code>|&gt;</code>.</p>
 </div>
+</section>
+<section class="slide level2">
+<h2>¿Para qué sirve el <em>pipe</em> (<code>%&gt;%</code>)?</h2>
+<div class="modulo">
+<p>Módulo 6 · dplyr</p>
+</div>
+<div class="chico">
+<p>Nos permite <strong>encadenar varios pasos</strong> en un solo bloque de código. Se lee como <strong>“y luego”</strong>.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<div class="alerta">
+<p><strong>Sin pipe:</strong> una linea por cada paso, reescribiendo el objeto</p>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href=""></a><span class="co"># 1. Filtrar notas válidas</span></span>
+<span id="cb136-2"><a href=""></a>promedio <span class="ot">&lt;-</span> <span class="fu">filter</span>(notas,</span>
+<span id="cb136-3"><a href=""></a>                nota_matematicas <span class="sc">&lt;=</span> <span class="dv">7</span>)</span>
+<span id="cb136-4"><a href=""></a></span>
+<span id="cb136-5"><a href=""></a><span class="co"># 2. Calcular el promedio</span></span>
+<span id="cb136-6"><a href=""></a>promedio <span class="ot">&lt;-</span> <span class="fu">summarise</span>(promedio,</span>
+<span id="cb136-7"><a href=""></a>           <span class="at">promedio =</span> <span class="fu">mean</span>(nota_matematicas))</span>
+<span id="cb136-8"><a href=""></a></span>
+<span id="cb136-9"><a href=""></a><span class="co"># 3. Redondear a un decimal</span></span>
+<span id="cb136-10"><a href=""></a>promedio <span class="ot">&lt;-</span> <span class="fu">mutate</span>(promedio,</span>
+<span id="cb136-11"><a href=""></a>           <span class="at">promedio =</span> <span class="fu">round</span>(promedio, <span class="dv">1</span>))</span>
+<span id="cb136-12"><a href=""></a>promedio</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  promedio
+     &lt;dbl&gt;
+1      5.2</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:54%;">
+<div class="nota">
+<p><strong>Con pipe:</strong> todo en una sola cadena</p>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href=""></a>promedio <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb138-2"><a href=""></a>  <span class="fu">filter</span>(nota_matematicas <span class="sc">&lt;=</span> <span class="dv">7</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb138-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">promedio =</span> <span class="fu">mean</span>(nota_matematicas)) <span class="sc">%&gt;%</span></span>
+<span id="cb138-4"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">promedio =</span> <span class="fu">round</span>(promedio, <span class="dv">1</span>))</span>
+<span id="cb138-5"><a href=""></a>promedio</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  promedio
+     &lt;dbl&gt;
+1      5.2</code></pre>
+</div>
+</div>
+</div></div>
 </section>
 <section class="slide level2">
 <h2><code>filter()</code>: elegir filas</h2>
@@ -1563,8 +1538,8 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <p>Módulo 6 · dplyr</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb145-2"><a href=""></a>  <span class="fu">filter</span>(curso <span class="sc">==</span> <span class="st">"2°A"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb140-2"><a href=""></a>  <span class="fu">filter</span>(curso <span class="sc">==</span> <span class="st">"2°A"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 49 × 6
       id curso genero     edad nota_matematicas nota_lenguaje
@@ -1592,19 +1567,19 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="column" style="width:50%;">
 <p><strong>Y</strong> (<code>&amp;</code> o coma): se cumplen <strong>ambas</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb147-2"><a href=""></a>  <span class="fu">filter</span>(curso <span class="sc">==</span> <span class="st">"2°B"</span> <span class="sc">&amp;</span></span>
-<span id="cb147-3"><a href=""></a>         genero <span class="sc">==</span> <span class="st">"Femenino"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb147-4"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb142-2"><a href=""></a>  <span class="fu">filter</span>(curso <span class="sc">==</span> <span class="st">"2°B"</span> <span class="sc">&amp;</span></span>
+<span id="cb142-3"><a href=""></a>         genero <span class="sc">==</span> <span class="st">"Femenino"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb142-4"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24</code></pre>
 </div>
 </div>
 <p><strong>O</strong> (<code>|</code>): se cumple <strong>al menos una</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb149-2"><a href=""></a>  <span class="fu">filter</span>(edad <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> edad <span class="sc">==</span> <span class="dv">17</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb149-3"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb144-2"><a href=""></a>  <span class="fu">filter</span>(edad <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> edad <span class="sc">==</span> <span class="dv">17</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb144-3"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 36</code></pre>
 </div>
@@ -1612,9 +1587,9 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div><div class="column" style="width:50%;">
 <p><strong><code>%in%</code></strong>: el valor está en una lista</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb151-2"><a href=""></a>  <span class="fu">filter</span>(nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb151-3"><a href=""></a>  <span class="fu">select</span>(id, curso, nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb146-2"><a href=""></a>  <span class="fu">filter</span>(nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb146-3"><a href=""></a>  <span class="fu">select</span>(id, curso, nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id curso nota_matematicas
@@ -1635,10 +1610,10 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="column" style="width:50%;">
 <p>De menor a mayor</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb153-2"><a href=""></a>  <span class="fu">arrange</span>(nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb153-3"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb153-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb148-2"><a href=""></a>  <span class="fu">arrange</span>(nota_lenguaje) <span class="sc">%&gt;%</span></span>
+<span id="cb148-3"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
+<span id="cb148-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
      id genero    nota_lenguaje
@@ -1652,10 +1627,10 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div><div class="column" style="width:50%;">
 <p>De mayor a menor, con <code>desc()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb155-2"><a href=""></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_lenguaje)) <span class="sc">%&gt;%</span></span>
-<span id="cb155-3"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb155-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href=""></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_lenguaje)) <span class="sc">%&gt;%</span></span>
+<span id="cb150-3"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
+<span id="cb150-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
      id genero    nota_lenguaje
@@ -1677,9 +1652,9 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="column" style="width:50%;">
 <p>Por nombre</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb157-2"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb157-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb152-2"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
+<span id="cb152-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id genero    nota_lenguaje
@@ -1691,9 +1666,9 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>Con funciones de ayuda</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb159-2"><a href=""></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"nota_"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb159-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb154-2"><a href=""></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"nota_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb154-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id nota_matematicas nota_lenguaje
@@ -1706,9 +1681,9 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div><div class="column" style="width:50%;">
 <p>Quitar columnas con <code>-</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb161-2"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>curso, <span class="sc">-</span>edad, <span class="sc">-</span>nota_matematicas) <span class="sc">%&gt;%</span></span>
-<span id="cb161-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb156-2"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>curso, <span class="sc">-</span>edad, <span class="sc">-</span>nota_matematicas) <span class="sc">%&gt;%</span></span>
+<span id="cb156-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id genero    nota_lenguaje
@@ -1730,10 +1705,10 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>La sintaxis es <strong><code>nombre_nuevo = nombre_viejo</code></strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb163-2"><a href=""></a>  <span class="fu">rename</span>(<span class="at">mate =</span> nota_matematicas,</span>
-<span id="cb163-3"><a href=""></a>         <span class="at">leng =</span> nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb163-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb158-2"><a href=""></a>  <span class="fu">rename</span>(<span class="at">mate =</span> nota_matematicas,</span>
+<span id="cb158-3"><a href=""></a>         <span class="at">leng =</span> nota_lenguaje) <span class="sc">%&gt;%</span></span>
+<span id="cb158-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 6
      id curso genero     edad  mate  leng
@@ -1754,11 +1729,11 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><code>mutate()</code> crea o modifica variables. Con <code>if_else()</code> reemplazamos los códigos por <code>NA</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb165"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb165-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">nota_matematicas =</span> <span class="fu">if_else</span>(nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_matematicas),</span>
-<span id="cb165-3"><a href=""></a>         <span class="at">nota_lenguaje    =</span> <span class="fu">if_else</span>(nota_lenguaje    <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_lenguaje))</span>
-<span id="cb165-4"><a href=""></a></span>
-<span id="cb165-5"><a href=""></a><span class="fu">summary</span>(notas<span class="sc">$</span>nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb160-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">nota_matematicas =</span> <span class="fu">if_else</span>(nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_matematicas),</span>
+<span id="cb160-3"><a href=""></a>         <span class="at">nota_lenguaje    =</span> <span class="fu">if_else</span>(nota_lenguaje    <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_lenguaje))</span>
+<span id="cb160-4"><a href=""></a></span>
+<span id="cb160-5"><a href=""></a><span class="fu">summary</span>(notas<span class="sc">$</span>nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
   3.300   4.700   5.100   5.225   5.800   7.000       3 </code></pre>
@@ -1777,14 +1752,14 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <p>Módulo 6 · dplyr</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb167"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb167-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">promedio   =</span> (nota_matematicas <span class="sc">+</span> nota_lenguaje) <span class="sc">/</span> <span class="dv">2</span>,</span>
-<span id="cb167-3"><a href=""></a>         <span class="at">aprueba_mate =</span> <span class="fu">if_else</span>(nota_matematicas <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="st">"Aprueba"</span>, <span class="st">"Reprueba"</span>),</span>
-<span id="cb167-4"><a href=""></a>         <span class="at">genero     =</span> <span class="fu">factor</span>(genero))</span>
-<span id="cb167-5"><a href=""></a></span>
-<span id="cb167-6"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb167-7"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_matematicas, nota_lenguaje, promedio, aprueba_mate) <span class="sc">%&gt;%</span></span>
-<span id="cb167-8"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb162-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">promedio   =</span> (nota_matematicas <span class="sc">+</span> nota_lenguaje) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb162-3"><a href=""></a>         <span class="at">aprueba_mate =</span> <span class="fu">if_else</span>(nota_matematicas <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="st">"Aprueba"</span>, <span class="st">"Reprueba"</span>),</span>
+<span id="cb162-4"><a href=""></a>         <span class="at">genero     =</span> <span class="fu">factor</span>(genero))</span>
+<span id="cb162-5"><a href=""></a></span>
+<span id="cb162-6"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb162-7"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_matematicas, nota_lenguaje, promedio, aprueba_mate) <span class="sc">%&gt;%</span></span>
+<span id="cb162-8"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
      id genero    nota_matematicas nota_lenguaje promedio aprueba_mate
@@ -1804,13 +1779,13 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>Para recodificar en <strong>más de dos categorías</strong>, usamos <code>case_when()</code>: cada línea es <code>condición ~ valor</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb169"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb169-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">tramo_lenguaje =</span> <span class="fu">case_when</span>(nota_lenguaje <span class="sc">&lt;</span>  <span class="dv">4</span>   <span class="sc">~</span> <span class="st">"Insuficiente"</span>,</span>
-<span id="cb169-3"><a href=""></a>                                    nota_lenguaje <span class="sc">&lt;</span>  <span class="fl">5.5</span> <span class="sc">~</span> <span class="st">"Suficiente"</span>,</span>
-<span id="cb169-4"><a href=""></a>                                    nota_lenguaje <span class="sc">&gt;=</span> <span class="fl">5.5</span> <span class="sc">~</span> <span class="st">"Destacado"</span>,</span>
-<span id="cb169-5"><a href=""></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>)) <span class="co"># Dependiendo de la naturaleza de la variable ponemos NA_real_, NA_complex_, NA_integer_</span></span>
-<span id="cb169-6"><a href=""></a></span>
-<span id="cb169-7"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>tramo_lenguaje, <span class="at">useNA =</span> <span class="st">"ifany"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb164-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">tramo_lenguaje =</span> <span class="fu">case_when</span>(nota_lenguaje <span class="sc">&lt;</span>  <span class="dv">4</span>   <span class="sc">~</span> <span class="st">"Insuficiente"</span>,</span>
+<span id="cb164-3"><a href=""></a>                                    nota_lenguaje <span class="sc">&lt;</span>  <span class="fl">5.5</span> <span class="sc">~</span> <span class="st">"Suficiente"</span>,</span>
+<span id="cb164-4"><a href=""></a>                                    nota_lenguaje <span class="sc">&gt;=</span> <span class="fl">5.5</span> <span class="sc">~</span> <span class="st">"Destacado"</span>,</span>
+<span id="cb164-5"><a href=""></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>)) <span class="co"># Dependiendo de la naturaleza de la variable ponemos NA_real_, NA_complex_, NA_integer_</span></span>
+<span id="cb164-6"><a href=""></a></span>
+<span id="cb164-7"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>tramo_lenguaje, <span class="at">useNA =</span> <span class="st">"ifany"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Destacado Insuficiente   Suficiente         &lt;NA&gt; 
@@ -1828,11 +1803,11 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><code>summarise()</code> reduce toda la base a <strong>una fila</strong> con los estadísticos que pidamos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb171"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb171-2"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
-<span id="cb171-3"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb171-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb171-5"><a href=""></a>            <span class="at">de_leng    =</span> <span class="fu">sd</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb166-2"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
+<span id="cb166-3"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb166-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb166-5"><a href=""></a>            <span class="at">de_leng    =</span> <span class="fu">sd</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
       n media_mate media_leng de_leng
@@ -1851,12 +1826,12 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>La combinación más poderosa de <code>dplyr</code>: calcular estadísticos <strong>para cada grupo</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb173"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb173-2"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
-<span id="cb173-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
-<span id="cb173-4"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb173-5"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb173-6"><a href=""></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb168-2"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
+<span id="cb168-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
+<span id="cb168-4"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb168-5"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb168-6"><a href=""></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   genero        n media_mate media_leng
@@ -1875,11 +1850,11 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <p>Módulo 6 · dplyr</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb175"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb175-2"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span></span>
-<span id="cb175-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">media_mate =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
-<span id="cb175-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
-<span id="cb175-5"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb170-2"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span></span>
+<span id="cb170-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">media_mate =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb170-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb170-5"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   curso genero    media_mate media_leng
@@ -1901,8 +1876,8 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><code>count()</code> es un atajo para <code>group_by()</code> + <code>summarise(n = n())</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb177"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb177-2"><a href=""></a>  <span class="fu">count</span>(genero, aprueba_mate)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb172-2"><a href=""></a>  <span class="fu">count</span>(genero, aprueba_mate)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   genero    aprueba_mate     n
@@ -1916,10 +1891,10 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb179"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb179-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(aprueba_mate)) <span class="sc">%&gt;%</span></span>
-<span id="cb179-3"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
-<span id="cb179-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">pct_aprueba =</span> <span class="fu">mean</span>(aprueba_mate <span class="sc">==</span> <span class="st">"Aprueba"</span>) <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb174-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(aprueba_mate)) <span class="sc">%&gt;%</span></span>
+<span id="cb174-3"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
+<span id="cb174-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">pct_aprueba =</span> <span class="fu">mean</span>(aprueba_mate <span class="sc">==</span> <span class="st">"Aprueba"</span>) <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   genero    pct_aprueba
@@ -1936,17 +1911,17 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><strong>¿Las brechas de género en las notas son iguales en ambos cursos?</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb181"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href=""></a>brechas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb181-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(nota_matematicas), <span class="sc">!</span><span class="fu">is.na</span>(nota_lenguaje)) <span class="sc">%&gt;%</span>   <span class="co"># solo casos válidos</span></span>
-<span id="cb181-3"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span>                                   <span class="co"># por curso y género</span></span>
-<span id="cb181-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb181-5"><a href=""></a>            <span class="at">mate =</span> <span class="fu">mean</span>(nota_matematicas),</span>
-<span id="cb181-6"><a href=""></a>            <span class="at">leng =</span> <span class="fu">mean</span>(nota_lenguaje),</span>
-<span id="cb181-7"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb181-8"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">round</span>(mate <span class="sc">-</span> leng, <span class="dv">2</span>)) <span class="sc">%&gt;%</span>                <span class="co"># mate - lenguaje</span></span>
-<span id="cb181-9"><a href=""></a>  <span class="fu">arrange</span>(curso, <span class="fu">desc</span>(diferencia))</span>
-<span id="cb181-10"><a href=""></a></span>
-<span id="cb181-11"><a href=""></a>brechas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href=""></a>brechas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb176-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(nota_matematicas), <span class="sc">!</span><span class="fu">is.na</span>(nota_lenguaje)) <span class="sc">%&gt;%</span>   <span class="co"># solo casos válidos</span></span>
+<span id="cb176-3"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span>                                   <span class="co"># por curso y género</span></span>
+<span id="cb176-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb176-5"><a href=""></a>            <span class="at">mate =</span> <span class="fu">mean</span>(nota_matematicas),</span>
+<span id="cb176-6"><a href=""></a>            <span class="at">leng =</span> <span class="fu">mean</span>(nota_lenguaje),</span>
+<span id="cb176-7"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb176-8"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">round</span>(mate <span class="sc">-</span> leng, <span class="dv">2</span>)) <span class="sc">%&gt;%</span>                <span class="co"># mate - lenguaje</span></span>
+<span id="cb176-9"><a href=""></a>  <span class="fu">arrange</span>(curso, <span class="fu">desc</span>(diferencia))</span>
+<span id="cb176-10"><a href=""></a></span>
+<span id="cb176-11"><a href=""></a>brechas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 6
   curso genero        n  mate  leng diferencia
@@ -1972,8 +1947,8 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>Los resultados se guardan en la carpeta <strong><code>output/</code></strong>, nunca sobre los datos originales de <code>input/</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb183"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href=""></a><span class="fu">write_csv</span>(brechas, <span class="st">"output/brechas_genero.csv"</span>)   <span class="co"># tabla de resultados</span></span>
-<span id="cb183-2"><a href=""></a><span class="fu">saveRDS</span>(notas, <span class="st">"output/notas_limpia.rds"</span>)         <span class="co"># base limpia, para seguir trabajando</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb178"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb178-1"><a href=""></a><span class="fu">write_csv</span>(brechas, <span class="st">"output/brechas_genero.csv"</span>)   <span class="co"># tabla de resultados</span></span>
+<span id="cb178-2"><a href=""></a><span class="fu">saveRDS</span>(notas, <span class="st">"output/notas_limpia.rds"</span>)         <span class="co"># base limpia, para seguir trabajando</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="nota">
@@ -2035,7 +2010,6 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <li>Cap. 10 a 12: tibbles, importación y datos ordenados</li>
 <li>Cap. 15: factores</li>
 </ul></li>
-<li>Documentación de <code>haven</code>: <a href="https://haven.tidyverse.org/" class="uri">https://haven.tidyverse.org/</a></li>
 <li>Hoja de referencia de <code>dplyr</code> (<em>cheatsheet</em>): <strong>Help → Cheat Sheets</strong> en RStudio</li>
 </ul>
 <p><br></p>

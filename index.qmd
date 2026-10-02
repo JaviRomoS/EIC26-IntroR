@@ -567,27 +567,6 @@ dplyr::filter(notas, curso == "2°A")
 Módulo 4<br>Bases de datos rectangulares
 :::
 
-## Nuestra base de datos
-
-::: modulo
-Módulo 4 · Bases de datos
-:::
-
-Notas de **98 estudiantes** de dos cursos de un colegio (2°A y 2°B). Datos **ficticios**.
-
-| Variable | Descripción | Valores |
-|---|---|---|
-| `id` | Identificador del estudiante | 1 a 98 |
-| `curso` | Curso | 2°A, 2°B |
-| `genero` | Género | Femenino, Masculino |
-| `edad` | Edad en años | 15 a 17 |
-| `nota_matematicas` | Promedio anual en Matemáticas | 1,5 a 7,0 · **888** = No rindió · **999** = Sin información |
-| `nota_lenguaje` | Promedio anual en Lenguaje | 1,5 a 7,0 · **888** = No rindió · **999** = Sin información |
-
-::: nota
-La hoja `libro_codigos` del Excel tiene esta misma descripción. **Siempre** hay que revisar el libro de códigos antes de analizar una base.
-:::
-
 ## Variable, valor y observación
 
 ::: modulo
@@ -699,39 +678,28 @@ mi_base
 Cada columna es un vector (Módulo 2). Todas deben tener **la misma cantidad de valores**: uno por observación.
 :::
 
-## *Tibbles*: data frames modernos
+
+## Nuestra base de datos
 
 ::: modulo
 Módulo 4 · Bases de datos
 :::
 
-El `tidyverse` usa **tibbles** (cap. 10): data frames que se imprimen de forma más ordenada.
+Notas de **98 estudiantes** de dos cursos de un colegio (2°A y 2°B). Datos **ficticios**.
 
-:::: {.columns}
-::: {.column width="50%"}
-```{r}
-#| label: tibble
-tibble(
-  estudiante = c("Ana", "Benja", "Carla"),
-  curso      = c("2°A", "2°B", "2°A"),
-  nota_mate  = c(6.1, 5.4, 4.9)
-)
-```
+| Variable | Descripción | Valores |
+|---|---|---|
+| `id` | Identificador del estudiante | 1 a 98 |
+| `curso` | Curso | 2°A, 2°B |
+| `genero` | Género | Femenino, Masculino |
+| `edad` | Edad en años | 15 a 17 |
+| `nota_matematicas` | Promedio anual en Matemáticas | 1,5 a 7,0 · **888** = No rindió · **999** = Sin información |
+| `nota_lenguaje` | Promedio anual en Lenguaje | 1,5 a 7,0 · **888** = No rindió · **999** = Sin información |
+
+::: nota
+La hoja `libro_codigos` del Excel tiene esta misma descripción. **Siempre** hay que revisar el libro de códigos antes de analizar una base.
 :::
-::: {.column width="50%"}
-Al imprimir un tibble vemos:
 
-- El **número de filas y columnas** (`3 x 3`).
-- El **tipo** de cada variable bajo su nombre: `<chr>` texto, `<dbl>` número.
-- Solo las primeras 10 filas (no inunda la consola).
-
-```{r}
-#| label: as-tibble
-#| eval: false
-as_tibble(mi_base)   # convierte un data frame en tibble
-```
-:::
-::::
 
 ## Importar datos desde Excel
 
@@ -847,11 +815,12 @@ Módulo 5 · Variables
 | Tipo | En el tibble | Ejemplo | Uso típico |
 |---|---|---|---|
 | Numérico (*double*) | `<dbl>` | `5.5`, `16` | Notas, edad, ingresos |
-| Entero (*integer*) | `<int>` | `16L` | Conteos |
 | Texto (*character*) | `<chr>` | `"Femenino"` | Nombres, respuestas abiertas |
-| Lógico (*logical*) | `<lgl>` | `TRUE`, `FALSE` | Resultados de comparaciones |
 | Factor | `<fct>` | `Femenino` (nivel 1) | Variables categóricas |
 | Etiquetado | `<dbl+lbl>` | `888 [No rindió]` | Bases de SPSS / Stata |
+| Lógico (*logical*) | `<lgl>` | `TRUE`, `FALSE` | Resultados de comparaciones |
+| Entero (*integer*) | `<int>` | `16L` | Conteos |
+
 
 ```{r}
 #| label: class
@@ -894,37 +863,6 @@ table(notas$genero)
 
 ::: chico
 Para R, `"Femenino"`, `"femenino"` y `"FEMENINO"` son tres valores **distintos**. Esto es frecuente en respuestas abiertas o bases mal digitadas.
-:::
-
-## Variables lógicas
-
-::: modulo
-Módulo 5 · Variables
-:::
-
-Solo toman los valores **`TRUE`** (verdadero) o **`FALSE`** (falso). Aparecen cuando hacemos **comparaciones**:
-
-:::: {.columns}
-::: {.column width="45%"}
-| Operador | Significa |
-|---|---|
-| `==` | igual a |
-| `!=` | distinto de |
-| `>`, `>=` | mayor (o igual) |
-| `<`, `<=` | menor (o igual) |
-:::
-::: {.column width="55%"}
-```{r}
-#| label: logicas
-5.5 >= 4
-"2°A" == "2°B"
-head(notas$nota_lenguaje >= 4)
-```
-:::
-::::
-
-::: nota
-Se usan muchísimo para **filtrar** casos (módulo 6). Además, `TRUE` vale 1 y `FALSE` vale 0, por lo que `mean()` de un vector lógico da una **proporción**.
 :::
 
 ## Factores: variables categóricas
@@ -1074,6 +1012,18 @@ as.numeric(edades_f)                  # ✘ posiciones de los niveles
 as.numeric(as.character(edades_f))    # ✔ valores originales
 ```
 
+## Entonces, ¿Qué sigue para nuestro análisis?
+
+::: modulo
+Módulo 5 · Variables
+:::
+
+1. Seleccionar variables (por ejemplo, la variable id no nos servirá para el análisis)
+2. Transformar variables (recodificar los 888 y 999 como NA)
+3. Crear variables nuevas que nos puedan servir en el análisis
+4. Crear tablas para analizar resultados
+
+
 <!-- ================================================================== -->
 <!-- MÓDULO 6 · DPLYR                                                    -->
 <!-- ================================================================== -->
@@ -1137,8 +1087,57 @@ c(5.5, 6.2, 4.8) %>%
 <br>
 
 ::: nota
-**Atajo:** `Ctrl + Shift + M` escribe `%>%`. También existe el *pipe* nativo de R, `|>`, que funciona igual en casi todos los casos.
+**Atajo:** `Ctrl + Shift + M` escribe `%>%`. También existe el *pipe* nativo de R, `|>`.
 :::
+
+## ¿Para qué sirve el *pipe* (`%>%`)?
+
+::: modulo
+Módulo 6 · dplyr
+:::
+
+::: chico
+Nos permite **encadenar varios pasos** en un solo bloque de código. Se lee como **"y luego"**.
+:::
+
+:::: {.columns}
+::: {.column width="46%"}
+::: alerta
+**Sin pipe:** una linea por cada paso, reescribiendo el objeto
+:::
+
+```{r}
+#| label: sin-pipe-pasos
+# 1. Filtrar notas válidas
+promedio <- filter(notas,
+                nota_matematicas <= 7)
+
+# 2. Calcular el promedio
+promedio <- summarise(promedio,
+           promedio = mean(nota_matematicas))
+
+# 3. Redondear a un decimal
+promedio <- mutate(promedio,
+           promedio = round(promedio, 1))
+promedio
+```
+:::
+::: {.column width="54%"}
+::: nota
+**Con pipe:** todo en una sola cadena
+:::
+
+```{r}
+#| label: con-pipe-pasos
+promedio <- notas %>%
+  filter(nota_matematicas <= 7) %>%
+  summarise(promedio = mean(nota_matematicas)) %>%
+  mutate(promedio = round(promedio, 1))
+promedio
+```
+
+:::
+::::
 
 ## `filter()`: elegir filas
 
@@ -1534,7 +1533,6 @@ Cierre
   - Cap. 5: transformación de datos con `dplyr`
   - Cap. 10 a 12: tibbles, importación y datos ordenados
   - Cap. 15: factores
-- Documentación de `haven`: <https://haven.tidyverse.org/>
 - Hoja de referencia de `dplyr` (*cheatsheet*): **Help → Cheat Sheets** en RStudio
 
 <br>
