@@ -1040,7 +1040,7 @@ Módulo 6<br>Transformar datos con `dplyr`
 Módulo 6 · dplyr
 :::
 
-`dplyr` (parte del `tidyverse`) ofrece **verbos** para transformar datos (cap. 5). Todos funcionan igual:
+`dplyr` ofrece **verbos** para transformar datos (cap. 5). Todos funcionan igual:
 
 1. El primer argumento es **una base de datos**.
 2. Los siguientes argumentos dicen **qué hacer**, usando los nombres de las variables **sin comillas** y **sin `$`**.
@@ -1151,7 +1151,7 @@ notas %>%
   filter(curso == "2°A")
 ```
 
-## `filter()` con varias condiciones
+## `filter()` con varias condiciones {.salida-chica}
 
 ::: modulo
 Módulo 6 · dplyr
@@ -1166,7 +1166,7 @@ Módulo 6 · dplyr
 notas %>%
   filter(curso == "2°B" &
          genero == "Femenino") %>%
-  nrow()
+  head(2)
 ```
 
 **O** (`|`): se cumple **al menos una**
@@ -1175,7 +1175,7 @@ notas %>%
 #| label: filter-o
 notas %>%
   filter(edad == 15 | edad == 17) %>%
-  nrow()
+  head(2)
 ```
 :::
 ::: {.column width="50%"}
@@ -1184,8 +1184,7 @@ notas %>%
 ```{r}
 #| label: filter-in
 notas %>%
-  filter(nota_matematicas %in% c(888, 999)) %>%
-  select(id, curso, nota_matematicas)
+  filter(nota_matematicas %in% c(888, 999))
 ```
 :::
 ::::
@@ -1204,7 +1203,6 @@ De menor a mayor
 #| label: arrange1
 notas %>%
   arrange(nota_lenguaje) %>%
-  select(id, genero, nota_lenguaje) %>%
   head(4)
 ```
 :::
@@ -1215,13 +1213,12 @@ De mayor a menor, con `desc()`
 #| label: arrange2
 notas %>%
   arrange(desc(nota_lenguaje)) %>%
-  select(id, genero, nota_lenguaje) %>%
   head(4)
 ```
 :::
 ::::
 
-## `select()`: elegir columnas
+## `select()`: elegir columnas {.salida-chica}
 
 ::: modulo
 Módulo 6 · dplyr
@@ -1237,6 +1234,17 @@ notas %>%
   select(id, genero, nota_lenguaje) %>%
   head(3)
 ```
+Quitar columnas con `-`
+
+```{r}
+#| label: select2
+notas %>%
+  select(-id) %>%
+  head(3)
+```
+
+:::
+::: {.column width="50%"}
 
 Con funciones de ayuda
 
@@ -1244,16 +1252,6 @@ Con funciones de ayuda
 #| label: select3
 notas %>%
   select(id, starts_with("nota_")) %>%
-  head(3)
-```
-:::
-::: {.column width="50%"}
-Quitar columnas con `-`
-
-```{r}
-#| label: select2
-notas %>%
-  select(-curso, -edad, -nota_matematicas) %>%
   head(3)
 ```
 
@@ -1273,14 +1271,14 @@ La sintaxis es **`nombre_nuevo = nombre_viejo`**:
 
 ```{r}
 #| label: rename
-notas %>%
-  rename(mate = nota_matematicas,
-         leng = nota_lenguaje) %>%
+notas <- notas %>%
+  rename(nota_mate = nota_matematicas,
+         nota_leng = nota_lenguaje) %>%
   head(3)
 ```
 
 ::: nota
-Nombres cortos y sin espacios ni tildes facilitan el trabajo. Ojo: si no guardamos el resultado con `<-`, la base original **no cambia**.
+Ojo: acá guardamos el resultado con `<-`, sino la base original **no cambia**.
 :::
 
 ## `mutate()`: recodificar 888 y 999 a `NA`
@@ -1294,10 +1292,9 @@ Módulo 6 · dplyr
 ```{r}
 #| label: mutate-na
 notas <- notas %>%
-  mutate(nota_matematicas = if_else(nota_matematicas %in% c(888, 999), NA, nota_matematicas),
-         nota_lenguaje    = if_else(nota_lenguaje    %in% c(888, 999), NA, nota_lenguaje))
+  mutate(nota_mate = if_else(nota_mate %in% c(888, 999), NA, nota_mate),
+         nota_leng    = if_else(nota_leng %in% c(888, 999), NA, nota_leng))
 
-summary(notas$nota_matematicas)
 ```
 
 ::: chico
@@ -1305,7 +1302,7 @@ summary(notas$nota_matematicas)
 :::
 
 ::: nota
-Esta vez **sí guardamos** el resultado con `notas <-`: la base queda corregida para lo que sigue.
+Recuerden **guardar** el resultado con `notas <-` para que la base quede corregida.
 :::
 
 ## `mutate()`: crear variables nuevas
@@ -1317,13 +1314,12 @@ Módulo 6 · dplyr
 ```{r}
 #| label: mutate-nuevas
 notas <- notas %>%
-  mutate(promedio   = (nota_matematicas + nota_lenguaje) / 2,
-         aprueba_mate = if_else(nota_matematicas >= 4, "Aprueba", "Reprueba"),
-         genero     = factor(genero))
+  mutate(genero       = factor(genero),
+         promedio     = (nota_mate + nota_leng) / 2,
+         aprueba_mate = if_else(nota_mate >= 4, "Aprueba", "Reprueba"))
 
 notas %>%
-  select(id, genero, nota_matematicas, nota_lenguaje, promedio, aprueba_mate) %>%
-  head(5)
+  select(genero, nota_mate, nota_leng, promedio, aprueba_mate)
 ```
 
 ## `mutate()` con `case_when()`
@@ -1337,12 +1333,12 @@ Para recodificar en **más de dos categorías**, usamos `case_when()`: cada lín
 ```{r}
 #| label: case-when
 notas <- notas %>%
-  mutate(tramo_lenguaje = case_when(nota_lenguaje <  4   ~ "Insuficiente",
-                                    nota_lenguaje <  5.5 ~ "Suficiente",
-                                    nota_lenguaje >= 5.5 ~ "Destacado",
-                                    TRUE ~ NA_character_)) # Dependiendo de la naturaleza de la variable ponemos NA_real_, NA_complex_, NA_integer_
+  mutate(tramo_lenguaje = case_when(nota_leng  <  4   ~ "Insuficiente",
+                                    nota_leng  < 6 ~ "Suficiente",
+                                    nota_leng >= 6 ~ "Destacado",
+                                    TRUE ~ NA_character_)) # Dependiendo de la naturaleza de la variable nueva
 
-table(notas$tramo_lenguaje, useNA = "ifany")
+table(notas$tramo_lenguaje)
 ```
 
 ::: chico
@@ -1361,9 +1357,9 @@ Módulo 6 · dplyr
 #| label: summarise
 notas %>%
   summarise(n          = n(),
-            media_mate = mean(nota_matematicas, na.rm = TRUE),
-            media_leng = mean(nota_lenguaje, na.rm = TRUE),
-            de_leng    = sd(nota_lenguaje, na.rm = TRUE))
+            media_mate = mean(nota_mate, na.rm = TRUE),
+            media_leng = mean(nota_leng, na.rm = TRUE),
+            de_leng    = sd(nota_leng, na.rm = TRUE))
 ```
 
 ::: nota
@@ -1383,8 +1379,8 @@ La combinación más poderosa de `dplyr`: calcular estadísticos **para cada gru
 notas %>%
   group_by(genero) %>%
   summarise(n          = n(),
-            media_mate = mean(nota_matematicas, na.rm = TRUE),
-            media_leng = mean(nota_lenguaje, na.rm = TRUE)) %>% 
+            media_mate = mean(nota_mate, na.rm = TRUE),
+            media_leng = mean(nota_leng, na.rm = TRUE)) %>% 
   ungroup()
 ```
 
@@ -1402,8 +1398,8 @@ Módulo 6 · dplyr
 #| label: group-by2
 notas %>%
   group_by(curso, genero) %>%
-  summarise(media_mate = round(mean(nota_matematicas, na.rm = TRUE), 2),
-            media_leng = round(mean(nota_lenguaje, na.rm = TRUE), 2),
+  summarise(media_mate = round(mean(nota_mate, na.rm = TRUE), 2),
+            media_leng = round(mean(nota_leng, na.rm = TRUE), 2),
             .groups = "drop")
 ```
 
@@ -1444,11 +1440,11 @@ Módulo 6 · dplyr
 ```{r}
 #| label: integrador
 brechas <- notas %>%
-  filter(!is.na(nota_matematicas), !is.na(nota_lenguaje)) %>%   # solo casos válidos
+  filter(!is.na(nota_mate), !is.na(nota_leng)) %>%   # solo casos válidos
   group_by(curso, genero) %>%                                   # por curso y género
   summarise(n = n(),
-            mate = mean(nota_matematicas),
-            leng = mean(nota_lenguaje),
+            mate = mean(nota_mate),
+            leng = mean(nota_leng),
             .groups = "drop") %>%
   mutate(diferencia = round(mate - leng, 2)) %>%                # mate - lenguaje
   arrange(curso, desc(diferencia))
@@ -1469,7 +1465,7 @@ Módulo 6 · dplyr
 #| fig-height: 5
 #| fig-align: center
 notas %>%
-  select(genero, Matemáticas = nota_matematicas, Lenguaje = nota_lenguaje) %>%
+  select(genero, Matemáticas = nota_mate, Lenguaje = nota_leng) %>%
   pivot_longer(-genero, names_to = "asignatura", values_to = "nota") %>%
   filter(!is.na(nota)) %>%
   group_by(asignatura, genero) %>%

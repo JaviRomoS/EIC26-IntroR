@@ -104,3 +104,7 @@ $code-color: #2f5fb3;
 
 /* Tablas más legibles en la cápsula */
 .reveal table { font-size: .66em; }
+
+/* Diapositivas con tablas anchas en dos columnas: salida mas chica y sin cortar lineas */
+.reveal .salida-chica div.cell-output pre code { font-size: .78em; white-space: pre; }
+.reveal .salida-chica div.cell-output pre { overflow-x: auto; }

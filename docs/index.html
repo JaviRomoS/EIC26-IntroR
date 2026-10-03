@@ -97,7 +97,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-455492ae34a35afe0a6cc56c41bbd6cf.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-7c60a3e72b5314c5202106fe5bf9c254.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -1408,7 +1408,7 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="modulo">
 <p>Módulo 6 · dplyr</p>
 </div>
-<p><code>dplyr</code> (parte del <code>tidyverse</code>) ofrece <strong>verbos</strong> para transformar datos (cap. 5). Todos funcionan igual:</p>
+<p><code>dplyr</code> ofrece <strong>verbos</strong> para transformar datos (cap. 5). Todos funcionan igual:</p>
 <ol type="1">
 <li>El primer argumento es <strong>una base de datos</strong>.</li>
 <li>Los siguientes argumentos dicen <strong>qué hacer</strong>, usando los nombres de las variables <strong>sin comillas</strong> y <strong>sin <code>$</code></strong>.</li>
@@ -1558,7 +1558,7 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
+<section class="slide level2 salida-chica">
 <h2><code>filter()</code> con varias condiciones</h2>
 <div class="modulo">
 <p>Módulo 6 · dplyr</p>
@@ -1570,33 +1570,40 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
 <span id="cb142-2"><a href=""></a>  <span class="fu">filter</span>(curso <span class="sc">==</span> <span class="st">"2°B"</span> <span class="sc">&amp;</span></span>
 <span id="cb142-3"><a href=""></a>         genero <span class="sc">==</span> <span class="st">"Femenino"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb142-4"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb142-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 24</code></pre>
+<pre><code># A tibble: 2 × 6
+     id curso genero    edad nota_matematicas nota_lenguaje
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+1    54 2°B   Femenino    16              5.2           5.7
+2    55 2°B   Femenino    16              4.5           5.7</code></pre>
 </div>
 </div>
 <p><strong>O</strong> (<code>|</code>): se cumple <strong>al menos una</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
 <span id="cb144-2"><a href=""></a>  <span class="fu">filter</span>(edad <span class="sc">==</span> <span class="dv">15</span> <span class="sc">|</span> edad <span class="sc">==</span> <span class="dv">17</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb144-3"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb144-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 36</code></pre>
+<pre><code># A tibble: 2 × 6
+     id curso genero     edad nota_matematicas nota_lenguaje
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+1     4 2°A   Masculino    17              6.1           5  
+2     5 2°A   Femenino     15              4.1           6.7</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong><code>%in%</code></strong>: el valor está en una lista</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb146-2"><a href=""></a>  <span class="fu">filter</span>(nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb146-3"><a href=""></a>  <span class="fu">select</span>(id, curso, nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb146-2"><a href=""></a>  <span class="fu">filter</span>(nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-     id curso nota_matematicas
-  &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
-1     7 2°A                888
-2    73 2°B                999
-3    91 2°B                888</code></pre>
+<pre><code># A tibble: 3 × 6
+     id curso genero     edad nota_matematicas nota_lenguaje
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+1     7 2°A   Masculino    15              888           6.7
+2    73 2°B   Masculino    16              999           5.3
+3    91 2°B   Femenino     16              888           5.8</code></pre>
 </div>
 </div>
 </div></div>
@@ -1612,16 +1619,15 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
 <span id="cb148-2"><a href=""></a>  <span class="fu">arrange</span>(nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb148-3"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb148-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb148-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-     id genero    nota_lenguaje
-  &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
-1    40 Masculino           3.3
-2    80 Masculino           3.4
-3    63 Masculino           3.6
-4    41 Masculino           3.7</code></pre>
+<pre><code># A tibble: 4 × 6
+     id curso genero     edad nota_matematicas nota_lenguaje
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+1    40 2°A   Masculino    17              4.6           3.3
+2    80 2°B   Masculino    16              4.3           3.4
+3    63 2°B   Masculino    16              4.8           3.6
+4    41 2°A   Masculino    17              6             3.7</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1629,21 +1635,20 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
 <span id="cb150-2"><a href=""></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_lenguaje)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-3"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_lenguaje) <span class="sc">%&gt;%</span></span>
-<span id="cb150-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb150-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-     id genero    nota_lenguaje
-  &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
-1    22 Masculino           999
-2    39 Masculino           888
-3    58 Masculino           888
-4    26 Femenino              7</code></pre>
+<pre><code># A tibble: 4 × 6
+     id curso genero     edad nota_matematicas nota_lenguaje
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+1    22 2°A   Masculino    16              5.7           999
+2    39 2°A   Masculino    16              6.6           888
+3    58 2°B   Masculino    16              5.2           888
+4    26 2°A   Femenino     16              4.8             7</code></pre>
 </div>
 </div>
 </div></div>
 </section>
-<section class="slide level2">
+<section class="slide level2 salida-chica">
 <h2><code>select()</code>: elegir columnas</h2>
 <div class="modulo">
 <p>Módulo 6 · dplyr</p>
@@ -1664,11 +1669,26 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 3     3 Masculino           5.2</code></pre>
 </div>
 </div>
-<p>Con funciones de ayuda</p>
+<p>Quitar columnas con <code>-</code></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb154-2"><a href=""></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"nota_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb154-2"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>id) <span class="sc">%&gt;%</span></span>
 <span id="cb154-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  curso genero     edad nota_matematicas nota_lenguaje
+  &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+1 2°A   Masculino    16              6             5.7
+2 2°A   Masculino    16              4.7           5.3
+3 2°A   Masculino    16              5.1           5.2</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Con funciones de ayuda</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb156-2"><a href=""></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"nota_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb156-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id nota_matematicas nota_lenguaje
@@ -1676,21 +1696,6 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 1     1              6             5.7
 2     2              4.7           5.3
 3     3              5.1           5.2</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<p>Quitar columnas con <code>-</code></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb156-2"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>curso, <span class="sc">-</span>edad, <span class="sc">-</span>nota_matematicas) <span class="sc">%&gt;%</span></span>
-<span id="cb156-3"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-     id genero    nota_lenguaje
-  &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
-1     1 Masculino           5.7
-2     2 Masculino           5.3
-3     3 Masculino           5.2</code></pre>
 </div>
 </div>
 <div class="chico">
@@ -1705,21 +1710,13 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>La sintaxis es <strong><code>nombre_nuevo = nombre_viejo</code></strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb158-2"><a href=""></a>  <span class="fu">rename</span>(<span class="at">mate =</span> nota_matematicas,</span>
-<span id="cb158-3"><a href=""></a>         <span class="at">leng =</span> nota_lenguaje) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb158-2"><a href=""></a>  <span class="fu">rename</span>(<span class="at">nota_mate =</span> nota_matematicas,</span>
+<span id="cb158-3"><a href=""></a>         <span class="at">nota_leng =</span> nota_lenguaje) <span class="sc">%&gt;%</span></span>
 <span id="cb158-4"><a href=""></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 6
-     id curso genero     edad  mate  leng
-  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1 2°A   Masculino    16   6     5.7
-2     2 2°A   Masculino    16   4.7   5.3
-3     3 2°A   Masculino    16   5.1   5.2</code></pre>
-</div>
 </div>
 <div class="nota">
-<p>Nombres cortos y sin espacios ni tildes facilitan el trabajo. Ojo: si no guardamos el resultado con <code>&lt;-</code>, la base original <strong>no cambia</strong>.</p>
+<p>Ojo: acá guardamos el resultado con <code>&lt;-</code>, sino la base original <strong>no cambia</strong>.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -1729,21 +1726,15 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><code>mutate()</code> crea o modifica variables. Con <code>if_else()</code> reemplazamos los códigos por <code>NA</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb160-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">nota_matematicas =</span> <span class="fu">if_else</span>(nota_matematicas <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_matematicas),</span>
-<span id="cb160-3"><a href=""></a>         <span class="at">nota_lenguaje    =</span> <span class="fu">if_else</span>(nota_lenguaje    <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_lenguaje))</span>
-<span id="cb160-4"><a href=""></a></span>
-<span id="cb160-5"><a href=""></a><span class="fu">summary</span>(notas<span class="sc">$</span>nota_matematicas)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  3.300   4.700   5.100   5.225   5.800   7.000       3 </code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb159-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">nota_mate =</span> <span class="fu">if_else</span>(nota_mate <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_mate),</span>
+<span id="cb159-3"><a href=""></a>         <span class="at">nota_leng    =</span> <span class="fu">if_else</span>(nota_leng <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">888</span>, <span class="dv">999</span>), <span class="cn">NA</span>, nota_leng))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="chico">
 <p><code>if_else(condición, valor si es verdadero, valor si es falso)</code>. Ahora el máximo es 7 y aparecen los <code>NA's</code>.</p>
 </div>
 <div class="nota">
-<p>Esta vez <strong>sí guardamos</strong> el resultado con <code>notas &lt;-</code>: la base queda corregida para lo que sigue.</p>
+<p>Recuerden <strong>guardar</strong> el resultado con <code>notas &lt;-</code> para que la base quede corregida.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -1752,23 +1743,20 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <p>Módulo 6 · dplyr</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb162-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">promedio   =</span> (nota_matematicas <span class="sc">+</span> nota_lenguaje) <span class="sc">/</span> <span class="dv">2</span>,</span>
-<span id="cb162-3"><a href=""></a>         <span class="at">aprueba_mate =</span> <span class="fu">if_else</span>(nota_matematicas <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="st">"Aprueba"</span>, <span class="st">"Reprueba"</span>),</span>
-<span id="cb162-4"><a href=""></a>         <span class="at">genero     =</span> <span class="fu">factor</span>(genero))</span>
-<span id="cb162-5"><a href=""></a></span>
-<span id="cb162-6"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb162-7"><a href=""></a>  <span class="fu">select</span>(id, genero, nota_matematicas, nota_lenguaje, promedio, aprueba_mate) <span class="sc">%&gt;%</span></span>
-<span id="cb162-8"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb160-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">genero       =</span> <span class="fu">factor</span>(genero),</span>
+<span id="cb160-3"><a href=""></a>         <span class="at">promedio     =</span> (nota_mate <span class="sc">+</span> nota_leng) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb160-4"><a href=""></a>         <span class="at">aprueba_mate =</span> <span class="fu">if_else</span>(nota_mate <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="st">"Aprueba"</span>, <span class="st">"Reprueba"</span>))</span>
+<span id="cb160-5"><a href=""></a></span>
+<span id="cb160-6"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb160-7"><a href=""></a>  <span class="fu">select</span>(genero, nota_mate, nota_leng, promedio, aprueba_mate)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 6
-     id genero    nota_matematicas nota_lenguaje promedio aprueba_mate
-  &lt;dbl&gt; &lt;fct&gt;                &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       
-1     1 Masculino              6             5.7     5.85 Aprueba     
-2     2 Masculino              4.7           5.3     5    Aprueba     
-3     3 Masculino              5.1           5.2     5.15 Aprueba     
-4     4 Masculino              6.1           5       5.55 Aprueba     
-5     5 Femenino               4.1           6.7     5.4  Aprueba     </code></pre>
+<pre><code># A tibble: 3 × 5
+  genero    nota_mate nota_leng promedio aprueba_mate
+  &lt;fct&gt;         &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       
+1 Masculino       6         5.7     5.85 Aprueba     
+2 Masculino       4.7       5.3     5    Aprueba     
+3 Masculino       5.1       5.2     5.15 Aprueba     </code></pre>
 </div>
 </div>
 </section>
@@ -1779,17 +1767,17 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>Para recodificar en <strong>más de dos categorías</strong>, usamos <code>case_when()</code>: cada línea es <code>condición ~ valor</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb164-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">tramo_lenguaje =</span> <span class="fu">case_when</span>(nota_lenguaje <span class="sc">&lt;</span>  <span class="dv">4</span>   <span class="sc">~</span> <span class="st">"Insuficiente"</span>,</span>
-<span id="cb164-3"><a href=""></a>                                    nota_lenguaje <span class="sc">&lt;</span>  <span class="fl">5.5</span> <span class="sc">~</span> <span class="st">"Suficiente"</span>,</span>
-<span id="cb164-4"><a href=""></a>                                    nota_lenguaje <span class="sc">&gt;=</span> <span class="fl">5.5</span> <span class="sc">~</span> <span class="st">"Destacado"</span>,</span>
-<span id="cb164-5"><a href=""></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>)) <span class="co"># Dependiendo de la naturaleza de la variable ponemos NA_real_, NA_complex_, NA_integer_</span></span>
-<span id="cb164-6"><a href=""></a></span>
-<span id="cb164-7"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>tramo_lenguaje, <span class="at">useNA =</span> <span class="st">"ifany"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href=""></a>notas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb162-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">tramo_lenguaje =</span> <span class="fu">case_when</span>(nota_leng  <span class="sc">&lt;</span>  <span class="dv">4</span>   <span class="sc">~</span> <span class="st">"Insuficiente"</span>,</span>
+<span id="cb162-3"><a href=""></a>                                    nota_leng  <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Suficiente"</span>,</span>
+<span id="cb162-4"><a href=""></a>                                    nota_leng <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Destacado"</span>,</span>
+<span id="cb162-5"><a href=""></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>)) <span class="co"># Dependiendo de la naturaleza de la variable nueva</span></span>
+<span id="cb162-6"><a href=""></a></span>
+<span id="cb162-7"><a href=""></a><span class="fu">table</span>(notas<span class="sc">$</span>tramo_lenguaje)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-   Destacado Insuficiente   Suficiente         &lt;NA&gt; 
-          46            6           43            3 </code></pre>
+Suficiente 
+         3 </code></pre>
 </div>
 </div>
 <div class="chico">
@@ -1803,16 +1791,16 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><code>summarise()</code> reduce toda la base a <strong>una fila</strong> con los estadísticos que pidamos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb166-2"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
-<span id="cb166-3"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb166-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb166-5"><a href=""></a>            <span class="at">de_leng    =</span> <span class="fu">sd</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb164-2"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
+<span id="cb164-3"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_mate, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb164-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_leng, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb164-5"><a href=""></a>            <span class="at">de_leng    =</span> <span class="fu">sd</span>(nota_leng, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
       n media_mate media_leng de_leng
   &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
-1    98       5.23       5.35   0.900</code></pre>
+1     3       5.27        5.4   0.265</code></pre>
 </div>
 </div>
 <div class="nota">
@@ -1826,18 +1814,17 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>La combinación más poderosa de <code>dplyr</code>: calcular estadísticos <strong>para cada grupo</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb168-2"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
-<span id="cb168-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
-<span id="cb168-4"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb168-5"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb168-6"><a href=""></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb166-2"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
+<span id="cb166-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n          =</span> <span class="fu">n</span>(),</span>
+<span id="cb166-4"><a href=""></a>            <span class="at">media_mate =</span> <span class="fu">mean</span>(nota_mate, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb166-5"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">mean</span>(nota_leng, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-6"><a href=""></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
+<pre><code># A tibble: 1 × 4
   genero        n media_mate media_leng
   &lt;fct&gt;     &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-1 Femenino     49       4.87       5.66
-2 Masculino    49       5.59       5.03</code></pre>
+1 Masculino     3       5.27        5.4</code></pre>
 </div>
 </div>
 <div class="grande">
@@ -1850,19 +1837,16 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 <p>Módulo 6 · dplyr</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb170-2"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span></span>
-<span id="cb170-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">media_mate =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_matematicas, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
-<span id="cb170-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
-<span id="cb170-5"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb168-2"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span></span>
+<span id="cb168-3"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">media_mate =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_mate, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb168-4"><a href=""></a>            <span class="at">media_leng =</span> <span class="fu">round</span>(<span class="fu">mean</span>(nota_leng, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb168-5"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
+<pre><code># A tibble: 1 × 4
   curso genero    media_mate media_leng
   &lt;chr&gt; &lt;fct&gt;          &lt;dbl&gt;      &lt;dbl&gt;
-1 2°A   Femenino        4.9        5.73
-2 2°A   Masculino       5.4        5.03
-3 2°B   Femenino        4.83       5.58
-4 2°B   Masculino       5.78       5.03</code></pre>
+1 2°A   Masculino       5.27        5.4</code></pre>
 </div>
 </div>
 <div class="nota">
@@ -1876,31 +1860,25 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><code>count()</code> es un atajo para <code>group_by()</code> + <code>summarise(n = n())</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb172-2"><a href=""></a>  <span class="fu">count</span>(genero, aprueba_mate)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb170-2"><a href=""></a>  <span class="fu">count</span>(genero, aprueba_mate)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
+<pre><code># A tibble: 1 × 3
   genero    aprueba_mate     n
   &lt;fct&gt;     &lt;chr&gt;        &lt;int&gt;
-1 Femenino  Aprueba         45
-2 Femenino  Reprueba         3
-3 Femenino  &lt;NA&gt;             1
-4 Masculino Aprueba         46
-5 Masculino Reprueba         1
-6 Masculino &lt;NA&gt;             2</code></pre>
+1 Masculino Aprueba          3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
-<span id="cb174-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(aprueba_mate)) <span class="sc">%&gt;%</span></span>
-<span id="cb174-3"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
-<span id="cb174-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">pct_aprueba =</span> <span class="fu">mean</span>(aprueba_mate <span class="sc">==</span> <span class="st">"Aprueba"</span>) <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href=""></a>notas <span class="sc">%&gt;%</span></span>
+<span id="cb172-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(aprueba_mate)) <span class="sc">%&gt;%</span></span>
+<span id="cb172-3"><a href=""></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
+<span id="cb172-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">pct_aprueba =</span> <span class="fu">mean</span>(aprueba_mate <span class="sc">==</span> <span class="st">"Aprueba"</span>) <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
+<pre><code># A tibble: 1 × 2
   genero    pct_aprueba
   &lt;fct&gt;           &lt;dbl&gt;
-1 Femenino         93.8
-2 Masculino        97.9</code></pre>
+1 Masculino         100</code></pre>
 </div>
 </div>
 </section>
@@ -1911,25 +1889,22 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p><strong>¿Las brechas de género en las notas son iguales en ambos cursos?</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href=""></a>brechas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
-<span id="cb176-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(nota_matematicas), <span class="sc">!</span><span class="fu">is.na</span>(nota_lenguaje)) <span class="sc">%&gt;%</span>   <span class="co"># solo casos válidos</span></span>
-<span id="cb176-3"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span>                                   <span class="co"># por curso y género</span></span>
-<span id="cb176-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb176-5"><a href=""></a>            <span class="at">mate =</span> <span class="fu">mean</span>(nota_matematicas),</span>
-<span id="cb176-6"><a href=""></a>            <span class="at">leng =</span> <span class="fu">mean</span>(nota_lenguaje),</span>
-<span id="cb176-7"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb176-8"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">round</span>(mate <span class="sc">-</span> leng, <span class="dv">2</span>)) <span class="sc">%&gt;%</span>                <span class="co"># mate - lenguaje</span></span>
-<span id="cb176-9"><a href=""></a>  <span class="fu">arrange</span>(curso, <span class="fu">desc</span>(diferencia))</span>
-<span id="cb176-10"><a href=""></a></span>
-<span id="cb176-11"><a href=""></a>brechas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href=""></a>brechas <span class="ot">&lt;-</span> notas <span class="sc">%&gt;%</span></span>
+<span id="cb174-2"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(nota_mate), <span class="sc">!</span><span class="fu">is.na</span>(nota_leng)) <span class="sc">%&gt;%</span>   <span class="co"># solo casos válidos</span></span>
+<span id="cb174-3"><a href=""></a>  <span class="fu">group_by</span>(curso, genero) <span class="sc">%&gt;%</span>                                   <span class="co"># por curso y género</span></span>
+<span id="cb174-4"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb174-5"><a href=""></a>            <span class="at">mate =</span> <span class="fu">mean</span>(nota_mate),</span>
+<span id="cb174-6"><a href=""></a>            <span class="at">leng =</span> <span class="fu">mean</span>(nota_leng),</span>
+<span id="cb174-7"><a href=""></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb174-8"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">round</span>(mate <span class="sc">-</span> leng, <span class="dv">2</span>)) <span class="sc">%&gt;%</span>                <span class="co"># mate - lenguaje</span></span>
+<span id="cb174-9"><a href=""></a>  <span class="fu">arrange</span>(curso, <span class="fu">desc</span>(diferencia))</span>
+<span id="cb174-10"><a href=""></a></span>
+<span id="cb174-11"><a href=""></a>brechas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 6
+<pre><code># A tibble: 1 × 6
   curso genero        n  mate  leng diferencia
   &lt;chr&gt; &lt;fct&gt;     &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
-1 2°A   Masculino    21  5.32  4.95       0.37
-2 2°A   Femenino     25  4.90  5.73      -0.83
-3 2°B   Masculino    23  5.80  5.02       0.79
-4 2°B   Femenino     23  4.83  5.57      -0.74</code></pre>
+1 2°A   Masculino     3  5.27   5.4      -0.13</code></pre>
 </div>
 </div>
 </section>
@@ -1947,8 +1922,8 @@ Levels: 4.2 5.5 6.1 No rindió Sin información</code></pre>
 </div>
 <p>Los resultados se guardan en la carpeta <strong><code>output/</code></strong>, nunca sobre los datos originales de <code>input/</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb178"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb178-1"><a href=""></a><span class="fu">write_csv</span>(brechas, <span class="st">"output/brechas_genero.csv"</span>)   <span class="co"># tabla de resultados</span></span>
-<span id="cb178-2"><a href=""></a><span class="fu">saveRDS</span>(notas, <span class="st">"output/notas_limpia.rds"</span>)         <span class="co"># base limpia, para seguir trabajando</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href=""></a><span class="fu">write_csv</span>(brechas, <span class="st">"output/brechas_genero.csv"</span>)   <span class="co"># tabla de resultados</span></span>
+<span id="cb176-2"><a href=""></a><span class="fu">saveRDS</span>(notas, <span class="st">"output/notas_limpia.rds"</span>)         <span class="co"># base limpia, para seguir trabajando</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="nota">
