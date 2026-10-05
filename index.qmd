@@ -1234,17 +1234,6 @@ notas %>%
   select(id, genero, nota_lenguaje) %>%
   head(3)
 ```
-Quitar columnas con `-`
-
-```{r}
-#| label: select2
-notas %>%
-  select(-id) %>%
-  head(3)
-```
-
-:::
-::: {.column width="50%"}
 
 Con funciones de ayuda
 
@@ -1253,6 +1242,17 @@ Con funciones de ayuda
 notas %>%
   select(id, starts_with("nota_")) %>%
   head(3)
+```
+:::
+::: {.column width="50%"}
+Quitar columnas con `-` (y guardar)
+
+```{r}
+#| label: select2
+notas <- notas %>%
+  select(-id)
+
+head(notas, 3)
 ```
 
 ::: chico
@@ -1273,8 +1273,9 @@ La sintaxis es **`nombre_nuevo = nombre_viejo`**:
 #| label: rename
 notas <- notas %>%
   rename(nota_mate = nota_matematicas,
-         nota_leng = nota_lenguaje) %>%
-  head(3)
+         nota_leng = nota_lenguaje)
+
+head(notas, 3)
 ```
 
 ::: nota
@@ -1404,7 +1405,7 @@ notas %>%
 ```
 
 ::: nota
-En **ambos cursos** los hombres tienen mejores notas en Matemáticas y las mujeres en Lenguaje. ¿Cómo podríamos explicar sociológicamente estas brechas?
+En **ambos cursos** los hombres tienen mejores notas en Matemáticas y las mujeres en Lenguaje.
 :::
 
 ## `count()`: contar casos
@@ -1435,22 +1436,26 @@ notas %>%
 Módulo 6 · dplyr
 :::
 
-**¿Las brechas de género en las notas son iguales en ambos cursos?**
+**¿Cuál es la brecha de género en cada asignatura? ¿Es igual en ambos cursos?**
 
 ```{r}
 #| label: integrador
 brechas <- notas %>%
-  filter(!is.na(nota_mate), !is.na(nota_leng)) %>%   # solo casos válidos
-  group_by(curso, genero) %>%                                   # por curso y género
-  summarise(n = n(),
-            mate = mean(nota_mate),
-            leng = mean(nota_leng),
+  group_by(curso, genero) %>%                                    # 1. promedios por curso y género
+  summarise(mate = mean(nota_mate, na.rm = TRUE),
+            leng = mean(nota_leng, na.rm = TRUE),
             .groups = "drop") %>%
-  mutate(diferencia = round(mate - leng, 2)) %>%                # mate - lenguaje
-  arrange(curso, desc(diferencia))
+  pivot_wider(names_from = genero, values_from = c(mate, leng)) %>%  # 2. una columna por género
+  mutate(brecha_mate = round(mate_Femenino - mate_Masculino, 2),   # 3. mujeres - hombres
+         brecha_leng = round(leng_Femenino - leng_Masculino, 2))
 
-brechas
+brechas %>%
+  select(curso, brecha_mate, brecha_leng)
 ```
+
+::: nota
+**Brecha = promedio mujeres − promedio hombres.** Un valor **positivo** indica que las mujeres tienen mejor promedio; uno **negativo**, que lo tienen los hombres. `pivot_wider()` deja los promedios de cada género en columnas separadas para poder restarlos.
+:::
 
 ## Un adelanto: visualizar la brecha
 
@@ -1462,26 +1467,34 @@ Módulo 6 · dplyr
 #| label: grafico
 #| echo: false
 #| fig-width: 11
-#| fig-height: 5
+#| fig-height: 5.2
 #| fig-align: center
-notas %>%
-  select(genero, Matemáticas = nota_mate, Lenguaje = nota_leng) %>%
-  pivot_longer(-genero, names_to = "asignatura", values_to = "nota") %>%
-  filter(!is.na(nota)) %>%
-  group_by(asignatura, genero) %>%
-  summarise(nota = mean(nota), .groups = "drop") %>%
-  ggplot(aes(asignatura, nota, fill = genero)) +
+brechas %>%
+  select(curso, Matemáticas = brecha_mate, Lenguaje = brecha_leng) %>%
+  pivot_longer(-curso, names_to = "asignatura", values_to = "brecha") %>%
+  mutate(asignatura = factor(asignatura, levels = c("Matemáticas", "Lenguaje"))) %>%
+  ggplot(aes(asignatura, brecha, fill = curso)) +
+  geom_hline(yintercept = 0, colour = "#444444", linewidth = 0.8) +
   geom_col(position = position_dodge(width = 0.7), width = 0.65) +
-  geom_text(aes(label = format(round(nota, 2), decimal.mark = ",")),
-            position = position_dodge(width = 0.7), vjust = -0.5, size = 6) +
-  scale_fill_manual(values = c("Femenino" = "#4472c4", "Masculino" = "#ef8a3a")) +
-  scale_y_continuous(limits = c(0, 7), breaks = 1:7) +
-  labs(x = NULL, y = "Nota promedio", fill = NULL) +
+  geom_text(aes(label = format(brecha, decimal.mark = ","),
+                vjust = if_else(brecha >= 0, -0.5, 1.4)),
+            position = position_dodge(width = 0.7), size = 6) +
+  annotate("text", x = 2.5, y = 0.95, label = "Mujeres con\nmejor promedio",
+           hjust = 1, size = 5, colour = "#555555") +
+  annotate("text", x = 0.5, y = -0.95, label = "Hombres con\nmejor promedio",
+           hjust = 0, size = 5, colour = "#555555") +
+  scale_fill_manual(values = c("2°A" = "#4472c4", "2°B" = "#ef8a3a")) +
+  scale_y_continuous(limits = c(-1.1, 1.1), breaks = seq(-1, 1, 0.5),
+                     labels = function(x) format(x, decimal.mark = ",")) +
+  labs(x = NULL, y = "Brecha (mujeres − hombres)", fill = NULL) +
   theme_minimal(base_size = 20) +
   theme(legend.position = "top", panel.grid.major.x = element_blank(),
         panel.grid.minor = element_blank())
 ```
 
+::: chico
+Este gráfico se hace con `ggplot2`.
+:::
 
 ## Guardar resultados en `output/`
 
